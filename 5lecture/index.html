@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>id and class</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 
+        1. id Attribute
+            The id attribute assigns a unique identifier to an element.
+            No two elements on the same page should have the same id.
+            It is often used in JavaScript and CSS to target a specific element.
+    -->
+
+    <p id="uniquePara">this is a paragraph with id attribute</p>
+
+
+
+    <!-- 
+        2. class Attribute
+            The class attribute assigns a common identifier to multiple elements.
+            It allows grouping elements to apply the same CSS styles.
+            Multiple elements can have the same class.
+    -->
+
+    <!-- in this case the name of class of both paragraph's are same that's why same css applied on both.
+     If we wanted to applie different css, then we have to assign a unique id -->
+    <p class="highlighted">This is a paragraph with class attribute</p>
+
+    <p class="highlighted" id="secondPara">This is another paragraph with same class attribute</p>
+
+
+    <!-- we also give multiple class to a single elements
+         only need to add a space b/w the name of classes 
+    -->
+    <center><div class="first first-div"> hello ji
+        <div class="second">kya haaal chal</div>
+    </div></center>
+</body>
+</html>

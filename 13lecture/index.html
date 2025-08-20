@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS fonts and colors</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Baloo+Bhaijaan+2:wght@400..800&family=Darumadrop+One&display=swap');
+
+        .paraFirst {
+            /* we can also add font from other saurses like google fonts
+               and we have 2 another method to add fonts 
+               1. import method
+               2. link method */
+            font-family: "Baloo Bhaijaan 2", serif;
+
+            /* font-weight: 400; */
+            /* text-decoration: underline; */
+            /* font-style: italic; */
+
+            /* increasse the space b/w lines */
+            line-height: 3;
+
+            /* increase the space b/w letters */
+            letter-spacing: 10px;
+        }
+
+        h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            /* if we don't give font-size then browser give a default font-size value */
+            font-size: 40px;
+            letter-spacing: 20px;
+        }
+
+        h2 {
+            /* capitalize the first letter of each word */
+            /* "lowercase" for make all letters in lowercase
+                "uppercase" for make all letters in uppercase */
+            text-transform: capitalize;
+
+
+            /* underline with teal color */
+            text-decoration: underline;
+            text-decoration-color: teal;
+            text-decoration-style: wavy;
+            text-decoration-thickness: 2.5px;
+
+            text-align: center;
+            /* text-indent: 80px; */
+        }
+
+        .Lorem {
+            border: 3.5px solid rgb(64, 97, 8);
+            width: 145px;
+
+            /* break the words to fit in box */
+            word-break: break-all;
+
+            /* text-overflow: clip; */
+            /* overflow: hidden; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        CSS Fonts, Text, and Colors – A Simple Yet In-Depth Guide
+            CSS helps style the text on a webpage, making it more readable and visually appealing.
+            Let's break it down into three parts: Fonts, Text, and Colors.
+
+        1. CSS Fonts
+            CSS lets you control how the text looks by defining font type, size, weight, and style.
+
+            1.1 Font Family
+            Defines the type of font used for the text.
+            You can list multiple fonts as backups in case the first one is unavailable.
+            Example:-
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        
+        Common font types:-
+            Serif       →   Has small strokes (e.g., Times New Roman, Georgia).
+            Sans-serif  →   No strokes (e.g., Arial, Helvetica).
+            Monospace   →   Equal spacing between letters (e.g., Courier, Consolas).
+            Cursive     →   Handwritten style (e.g., Brush Script).
+            Fantasy     →   Decorative fonts (e.g., Impact).
+
+        1.2 Font Size (font-size)
+            Sets the size of the text.
+            Absolute sizes : px, pt, cm.
+            Relative sizes : em, rem, % (adjusts based on parent element).
+        1.3 Font Weight (font-weight)
+            Defines how bold the text appears. (font-weight: bold;)
+        1.5 Font Variant (font-variant)
+            Transforms lowercase letters into small-caps format. (font-variant: small-caps;)
+        1.6 Font Shorthand
+            You can set all font properties in one line.
+            Format:-
+                font: [style] [variant] [weight] [size]/[line-height] [family];
+    -->
+
+    <div>
+        <h1>Fonts</h1>
+
+        <h2>This is sub heading</h2>
+
+        <p class="paraFirst">This is a fonts Example</p>
+
+        <p class="paraFirst">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, consequatur ipsa. Ut
+            repellendus, aspernaturlabore a doloribus quaerat similique ratione quam, vero ab ad saepe.</p>
+
+    </div>
+
+    <p class="Lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi vitae quisquam suscipit iusto, vel
+        cum laboriosam harum accusantium id earum obcaecati vero nulla doloribus! Voluptatem!</p>
+
+
+</body>
+
+</html>

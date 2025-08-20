@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entities, quotation tag, obsolete tags and character set </title>
+</head>
+<body>
+
+    <!-- 
+        1. HTML Entities (HTML Special Characters)
+            HTML entities are used to display special characters that HTML normally treats as code or that are not available on the keyboard.
+
+        Why Use HTML Entities?
+            To Show Special Characters:
+            Example: ©, ®, €, ₹, →, ✓
+
+        To Prevent HTML Code Execution:-
+            Writing <p>Hello</p> directly in HTML will create a paragraph.
+            Instead, use &lt;p&gt;Hello&lt;/p&gt; to show it as text.
+
+        Common HTML Entities:-
+            Character	    Entity Name	        Entity Number
+            <	            &lt;	            &#60;
+            >	            &gt;	            &#62;
+            &	            &amp;	            &#38;
+            "	            &quot;	            &#34;
+            '	            &apos;	            &#39;
+            ©	            &copy;	            &#169;
+            ®	            &reg;	            &#174;
+            ₹               &#8377;	            Indian Rupee Symbol
+            ✓              &#10003;            Check Mark
+            ☀              &#9728;	           Sun Symbol
+
+        Types of HTML Entities:-
+            Named Entities → Example: &copy; for ©
+            Numeric Entities (Decimal) → Example: &#169; for ©
+            Numeric Entities (Hexadecimal) → Example: &#xA9; for ©
+    -->
+    <p>This is &lt;b&gt;bold&lt;/b&gt;</p>
+    <p>Copyright &copy; 2025</p>
+    <p title="This is &quot;quoted&quot; text">Hover here</p>
+    <p>The HTML tag for paragraph is &lt;p&gt;&lt;/p&gt;</p>
+
+
+
+
+
+    <!-- 
+        2. Quotation Tags in HTML:-
+            Quotation tags are used to display quotes in a structured and meaningful way.
+
+        Types of Quotation Tags:-
+        Tag	                Description	                        Example
+        <q>	                Inline short quotes	                "Hello, World!"
+        <blockquote>	    Long block quotes	                Used for citations or references
+        <cite>	            Citation for a work	                Used for book titles, articles, etc.
+        <abbr>	            Abbreviation or acronym	            HTML (HyperText Markup Language)
+    -->
+    <p>She said, <q>HTML is easy to learn.</q></p>
+    <blockquote>
+        The only way to do great work is to love what you do. - Steve Jobs
+    </blockquote>
+    <p>The book <cite>Harry Potter</cite> is very popular.</p>
+    <p><abbr title="HyperText Markup Language">HTML</abbr> is a markup language.</p>
+
+      
+
+
+
+    <!-- 
+        3. Obsolete (Deprecated) HTML Tags
+            Obsolete tags are those that are no longer supported in modern HTML versions (HTML5). They were used in older HTML but have been replaced by CSS or new HTML elements.
+
+        Common Obsolete Tags & Their Alternatives
+        Obsolete Tag	Purpose	                            Alternative
+        <font>	        Change text color and size	        Use CSS (font-family, color, font-size)
+        <center>	    Center text	                        Use CSS (text-align: center)
+        <marquee>	    Scrolling text	                    Use CSS (animation)
+        <b>	            Bold text (without meaning)	        Use <strong> (for importance)
+        <i>	            Italic text (without meaning)	    Use <em> (for emphasis)
+        <u>	            Underline text	                    Use CSS (text-decoration: underline)
+        <strike>	    Strikethrough text	                Use <s> or CSS (text-decoration: line-through)
+        <tt>	        Typewriter text	                    Use CSS (font-family: monospace)
+        <big>	        Large text	                        Use CSS (font-size: larger)
+    -->
+    <p>❌ Old Method (Obsolete)</p>
+    <font color="red" size="4">This is red text.</font>
+
+    <p>✓ Modern Method (CSS)</p>
+    <p style="color: red; font-size: 16px;">This is red text.</p>
+
+
+
+
+
+    <!-- 
+        4. Character Set in HTML
+            A character set defines how text is stored and displayed on a webpage. The most commonly used character set in HTML is UTF-8.
+
+        Why Use UTF-8?
+            Supports all languages (Hindi, English, Chinese, etc.).
+            Includes special characters (emoji, symbols).
+            Recommended for modern web development.
+            Declaring Character Set in HTML
+            Include the following inside <head>:
+
+        This ensures correct encoding for all characters.
+            <meta charset="UTF-8">
+
+
+        Examples of Character Encoding
+        Character	    UTF-8 Code	    Description
+        A               U+0041	        Latin Capital Letter A
+        ₹               U+20B9	        Indian Rupee Sign
+        😊              U+1F60A	        Smiling Face Emoji
+
+        Character Encoding Problems
+        If encoding is not set correctly, characters may appear as "?" or gibberish.
+        Older encoding types (e.g., ASCII) do not support non-English characters like अ, ₹, 你好.
+        UTF-8 is backward compatible with ASCII and supports almost all characters.
+    -->
+
+</body>
+</html>

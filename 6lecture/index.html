@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video and audio media</title>
+</head>
+<body>
+
+    <!-- 
+        1. <video> Element
+            The <video> tag is used to display video content on a webpage
+                .
+            Attributes:
+            Attribute	--        Description
+            controls	--        Displays playback controls (play, pause, volume, etc.).
+            autoplay	--        Starts playing the video automatically.
+            loop	    --        Repeats the video after it ends.
+            muted	    --        Mutes the video by default.
+            poster	    --        Specifies an image to be shown before the video starts.
+            preload     --        It helps manage bandwidth usage and loading speed.
+            width       --        Sets the size of the video.
+            and height
+
+            Supported File Formats
+            Media	Format	Extension
+            Video	MP4	    .mp4
+            Video	WebM	.webm
+            Video	Ogg	    .ogv
+    -->
+    <video src="video.mp4" controls height="500"></video>
+
+
+
+    <!-- 
+        2. <audio> Element
+            The <audio> tag is used to play audio files.
+
+            Attributes:
+            Attribute	Description
+            controls	Displays audio controls (play, pause, volume, etc.).
+            autoplay	Starts playing the audio automatically.
+            loop	    Repeats the audio after it ends.
+            muted	    Mutes the audio by default.
+            preload     --        It helps manage bandwidth usage and loading speed.
+
+
+            Supported File Formats
+            Media  	Format	Extension
+            Audio	MP3	    .mp3
+            Audio	Ogg	    .ogg
+            Audio	WAV	    .wav
+
+    -->
+    <audio src="audio.mp3" controls></audio>
+
+
+
+    <!-- 
+        3. SVG (<svg>)?
+        SVG (Scalable Vector Graphics) is used to create graphics like icons, logos, and illustrations in HTML. Unlike images (.jpg, .png), SVG does not lose quality when resized.
+
+
+        Common SVG Shapes
+        Shape	                Code	                                                    Description
+        Rectangle	<rect width="100" height="50" fill="blue" />	                        Creates a blue rectangle
+        Circle	    <circle cx="50" cy="50" r="40" fill="red" />	                        Creates a red circle
+        Line	    <line x1="10" y1="10" x2="90" y2="90" stroke="black" 
+                    stroke-width="2" />	Draws a diagonal line
+        Polygon	    <polygon points="50,15 90,85 10,85" fill="green" />	                    Creates a triangle
+        Text	    <text x="10" y="50" font-size="20">Hello SVG</text>	                    Displays text inside SVG
+
+
+        Why Use SVG?
+            ✔ Scalable – No loss of quality when resized
+            ✔ Editable – Can be styled with CSS and JavaScript
+            ✔ Lightweight – Smaller than images for simple graphics
+            ✔ Supports Animation – Can be animated with CSS/JS
+    -->
+    <svg width="100" height="100">
+        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+    </svg>
+    
+
+
+
+    <!-- 
+        4. What is <iframe>?
+            <iframe> (Inline Frame) embeds another webpage, video, or map inside a webpage.
+
+        Important <iframe> Attributes:-
+        Attribute	        Purpose
+        src	                Specifies the URL to embed
+        width & height	    Sets the iframe size
+        frameborder="0"	    Removes border around iframe
+        allowfullscreen	    Enables fullscreen mode (useful for videos)
+        sandbox	            Adds security restrictions to the iframe
+    -->
+    <iframe src="https://www.wikipedia.org" width="600" height="400"></iframe>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/XZwBNDGuWGU?si=Bcx2AneddaxAlgrU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <iframe src="https://www.google.com/maps/embed?..."></iframe>
+
+
+
+
+</body>
+</html>

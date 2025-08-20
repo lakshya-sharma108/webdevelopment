@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Box model</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            background-color: antiquewhite;
+        }
+
+
+        .box1 {
+            /* 
+            without --> box-sizing : border-box; (include margin)
+            total height = 200 + 10+10 + 2+2 + 5+5
+
+           with --> box-sizing : border-box; (don't include margin)
+            total height = 200 + 10+10 + 2+2
+            */
+            color: brown;
+            padding: 10px;
+            margin: 25px;
+            border: 3px solid blue;
+            height: 200px;
+            box-sizing: border-box;
+        }
+
+        /* 
+        margin collapse --> jab do boxes eksath ho to unke beech ka margin wahi hoga jis box ka margin maximum hai, na ki dono ka sum hoga.
+            in this case box1's margin will be applied b/w box1 and box2 
+        */
+
+        .box2 {
+            color: green;
+            padding: 10px;
+            margin: 10px;
+            border: 3px solid black;
+            height: 200px;
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- 
+        CSS Box Model (Simplified Definition)
+            The CSS Box Model is a way to understand how elements are structured on a webpage. 
+            Every element is treated as a rectangular box with four main parts:
+
+        Content – The actual text, image, or element inside the box.
+        Padding – The space between the content and the border.
+        Border  – The outline that surrounds the padding and content.
+        Margin  – The space outside the border that separates the element from others.
+        
+        Total size of an element = Content + Padding + Border + Margin.
+        Total Width = Content Width+Padding Left+Padding Right+Border Left+Border Right+Margin Left+Margin Right
+        Total Height = Content Height+Padding Top+Padding Bottom+Border Top+Border Bottom+Margin Top+Margin Bottom
+
+
+        🔹 By default (content-box) – Width & height apply only to content, 
+            and padding/border increase the total size.
+        🔹 With border-box – Width & height include padding and border, 
+            keeping the total size fixed.
+
+        Example :-
+            div {
+                width: 200px;
+                padding: 10px;
+                border: 5px solid black;
+                margin: 15px;
+            }
+        Total width = 200 + 10 + 10 + 5 + 5 + 15 + 15 = 260px
+        Total height = Content height + Padding + Border + Margin
+
+    -->
+
+
+
+    <!-- 
+        we can give multiple classes to single element
+        we need this when we have to apply same css on multiple elements but also have some different css for each element
+    -->
+    <div class="box box1">hii, i am a box</div>
+    <div class="box box2">I am another box</div>
+
+</body>
+
+</html>

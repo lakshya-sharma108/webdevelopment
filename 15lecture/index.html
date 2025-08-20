@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity & Cascade</title>
+    <style>
+        /* 
+            which one css color applie to hi and why ?
+
+            Reasion -- "The Cascade Algorithm" -- this algorithm works on precedence --
+            Cascade: Many selector are used to style a single element and css solve this conflict by Cascade.
+            Cascade Algorithm : It determine which property of CSS will be applied in Element.
+
+            Precedence wise rules :-
+                1. Position and Order of Appearance
+                   If same selector, then last one will be used.
+                   If the selectors are not same then css applies on the basis of high specificity/precedence selector.
+                   Order of Specificity :- Inline Style > ID selector > Class or Attribute  selector > Element Selector > Universal Selector
+                   NOTE :- hamesha low specificity wale selector ka use karna chahiye kyuki usko override karna asan hota hai.
+                2. Origin: authored CSS has priority
+                3. Important: When there is !important It has highest priority.
+                4. Calculating Specificity: Value of Each Selector: Universal is 0, 1 for each element selector or 
+                    pseudo-element, 10 for each class value (or pseudo-class or attribute selector), 100 for each ID value. Inline Style has 1000 specificity. Just add value to find specificity.
+        */
+        h1 {
+            color: aqua;
+        }
+
+        .yellow {
+            color: yellow !important;
+        }
+
+        .cred {
+            color: red;
+        }
+
+        .cpurple {
+            color: purple;
+        }
+
+        #green {
+            color: green;
+        }
+
+        /* Quick quiz -- calculate the specificity */
+        a.lakshayaclass.awasthiclass[href]:hover {
+            color: blueviolet;
+            
+            /* 
+
+                a                   element         1
+                lakshaya class      class           10
+                awasthiclass        class           10
+                [href]              attribute       10
+                :hover              pseudo class    10
+             -------------------------------------------
+                                total specificity = 41
+             -------------------------------------------
+             
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <hi id="green" class="yellow cred cpurple" style="color: cadetblue;">Css Specificity</hi>
+    </div>
+</body>
+
+</html>

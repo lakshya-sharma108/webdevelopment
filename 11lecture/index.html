@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css selectors</title>
+
+    <style>
+        /* Element selector */
+        div{
+            background-color:red;
+        }
+
+        /* Class selector */
+        .green{
+            background-color: green;
+        }
+
+        /* Id selector */
+        #blue{
+            background-color: blue;
+        }
+
+        /* Child selector -- path of that element ("div" ke andar -- "article" ke andar -- "p") */
+        div > article > p{
+            color: white;
+            background-color: black;
+        }
+
+        /* Attribute selector */
+        [data-name = lakshaya]{
+            background-color: plum;
+        }
+
+
+        /* Descendant selector -- div ke andar para kahi bhi ho */
+        div p{
+            background-color: aquamarine;
+        }
+
+        /* Universal selector for applying same css on all elements */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Pseudo selector */
+        a:visited{
+            color: red;
+        }
+        a:active{
+            background-color: black;
+        }
+        a:hover{
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- we can use child selector for this type of tags -->
+    <div>
+        I am a div
+        <article>
+            <p>
+                I am a para inside a div 
+            </p>
+        </article>
+    </div>
+
+    <div>
+        <p data-name="lakshaya">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae fugiat, cumque quia sed, iusto consequuntur nihil quis sapiente, neque sit suscipit saepe at temporibus reiciendis? Adipisci nam eveniet, itaque nostrum officia eos quo harum magnam.</p>
+    </div>
+
+    <div class="green">
+        I am another div 
+    </div>
+
+    <div class="green" id="blue">
+        I am another div 
+    </div>
+
+    <!-- 
+        Descendant selector -- ka matlab hai pahle sabse parent tag likhenge uske baad space 
+        dekar us tag ko likhenge jis par css lagani hai fir chahe vo kitna bhi andar ho
+      -->
+    <div>
+        <p>
+            <span>i am a <span></span></span>
+        </p>
+    </div>
+
+    <a href="https://www.google.com">Google par chale</a>
+
+</body>
+</html>

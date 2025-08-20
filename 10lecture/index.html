@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css type</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        div{
+            color: brown;
+            background-color: antiquewhite;
+        }
+
+        h1{
+            background-color: darkkhaki;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h2>Three ways to add CSS</h2>
+    <li>Inline Css</li>
+    <li>Internal Css</li>
+    <li>External Css</li>
+    <!-- 
+        we have three ways to use css
+        1. Inline css -- in this method we apply css inside opening tag using style attribute. This method is not recomended for best practice
+        example:-
+    -->
+        <p style="color: red; background-color: black;">Lorem ipsum dolor sit amet consectetur.</p>
+
+        
+    <!-- 
+        2. Internal css -- in this method we apply css inside <head> using <style> </style> tag.
+        
+        This method second most recomended for best practice
+
+            example:-
+    -->
+        <div >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quidem voluptatem distinctio debitis accusamus aliquam nemo perspiciatis dicta ullam pa dignissimos ipsam omnis.
+        </div>
+
+
+    <!-- 
+        3. External css -- in this method we have to create a seperate file for css with ".css" Extension, and link that css file with html file using <link rel="stylesheet" href="filename"> tag in head section.
+
+        This method is highly recomended for best practice
+
+        example:-
+    -->
+        <div class="abc">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore rem illo eligendi, ducimus nihil aspernatur temporibus numquam veritatis beatae maiores fuga alias ipsum architecto quidem vel a cupiditate nisi, vitae unde praesentium eius. Non, iste voluptas. Officia commodi est quae ea? Perspiciatis neque ad nostrum ratione pariatur cum officia dicta!
+        </div>
+
+        <!-- 
+        Presidency:--
+        1. Inline
+        2. Internal
+        3. External
+        -->
+        <h1 style="background-color: cornflowerblue;">Presidency checker</h1>
+        
+</body>
+</html>

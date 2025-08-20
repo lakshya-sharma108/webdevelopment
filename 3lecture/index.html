@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms and inputs</title>
+</head>
+<body>
+
+    <h1>Application form</h1>
+    <form action="post">
+
+    <div>
+        <label for="username">Enter your name here</label>
+        <input type="text" id="username" name="username" placeholder="Enter your name">
+    </div>
+
+    <div>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+    </div>
+    
+    <div>
+        <h2>which fruit do you like</h2>
+        <input type="checkbox" id="apple" name="apple" value="yes">
+        <label for="apple">Apple</label>
+        <input type="checkbox" id="banana" name="banana" value="yes">
+        <label for="banana">Banana</label>
+        <input type="checkbox" id="guava" name="guava" value="yes">
+        <label for="guava">Guava</label>
+        <input type="checkbox" id="dragon fruit" name="dragon fruit" value="yes">
+        <label for="dragon fruit">Dragon Fruit</label>
+    </div>
+
+    <div>
+        <label for="comment">Leave a comment here</label>
+       <br>    <!-- not recomended -->
+        <textarea name="comment" id="comment" cols="50" rows="10"></textarea>
+    </div>
+
+    <div>
+        <h3>Select your language</h3>
+        <select name="language" id="language">
+            <option value="Hindi">Hindi</option>
+            <option value="English">English</option>
+            <option value="Marathi">Marathi</option>
+            <option value="Tamil">Tamil</option>
+        </select>
+    </div>
+    </form>
+    
+</body>
+</html>
