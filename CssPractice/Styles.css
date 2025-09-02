@@ -1,6 +1,11 @@
 /* A separate file for external CSS */
 
 h3{
-    background-color: tomato;
-    font-size: 40px;
+    color: tomato;
+    /* font-size: 40px; */
+}
+
+#TestCss{
+    color: rgb(33, 193, 33);
+    font-size: 30px;
 }
