@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS</title>
+
+    <!-- This link tag is used to connect/link External css file -->
+    <link rel="stylesheet" href="Styles.css">
+
     <style>
         /* Inline CSS */
         h2{
             color: rgb(26, 84, 65);
             /* font-size: 50px; */
         }
-
+        
         #TestCss{
             color:sandybrown;
         }
+        
+        
+        </style>
 
-
-    </style>
-    <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
 
@@ -30,7 +34,7 @@
 
 
     <!-- Checking css applying prioritoy -->
-     <h1 id="TestCss" style="color: rgb(38, 98, 147);">Hi, my name is Lakshaya Awasthi</h1>
+     <h1 id="TestCss" >Hi, my name is Lakshaya Awasthi</h1>
      <!-- 
             Priority of CSS 
             1. Inline CSS (Highest Priority)
@@ -38,6 +42,13 @@
             3. External CSS (Lowest Priority)
             Note: If there are conflicting styles, the one with higher priority will be applied.
             "closer style has more priority"
+
+            !important keyword use karne se css ki priority badh jati hai, chahe wo lowest priority me ho
+            Example: color: blue !important;
+
+            Conclusion:
+            !improtaant > Inline CSS > Internal CSS > External CSS
+            higher >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> lower
      -->
 
 </body>
