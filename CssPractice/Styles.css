@@ -42,3 +42,17 @@ h6, p{
     color: purple;
     font-size: 20px;
 }
+
+
+
+/* Class and Id practice */
+#A, #B{
+    color:darkorchid;
+    font-size: 50px;
+}
+
+.class3{
+    background-color: rgb(126, 227, 164);
+    color: brown;
+    font-size: 40px;
+}
