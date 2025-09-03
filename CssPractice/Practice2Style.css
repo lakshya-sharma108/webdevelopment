@@ -2,6 +2,20 @@
 
     /* font-family --> How your font looks on webpage */
     font-family:cursive;
+
+    /* font-size --> Controls the size of font on webpage */
+    font-size: 20px;
+
+    /* font-weight --> Controls the weight/boldness of font */
+    font-weight:800;
+
+    /* font-style --> Controls the style of font like: Italic, Underline etc. */
+    font-style:italic;
+}
+
+#A{
+    /* line-height --> Controls the spacing b/w lines */
+    line-height: 40px;
 }
 
 #font2{
