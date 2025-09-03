@@ -34,3 +34,33 @@
 #font5{
     font-family: 'Courier New', Courier, monospace;
 }
+
+
+
+/* Text Properties Practice Starts here */
+#text1{
+
+    /* text-align --> Controls the alignment of text */
+    text-align: center;
+
+    /* text-decoration --> Controls the decoration of text like: underline, overline, line-through etc. */
+    text-decoration: underline;
+
+    /* text-decoration-color --> Controls the color of text decoration */
+    text-decoration-color: teal;
+
+    /* text-decoration-thikness --> Controls the thickness of text decoration */
+    text-decoration-thickness: 4px;
+
+    /* text-transform --> Controls the transformation of text like: uppercase, lowercase, capitalize */
+    text-transform: uppercase;
+
+    /* letter-spacing --> Controls the spacing b/w letters */
+    letter-spacing: 15px;
+
+    /* word-spacing --> Controls the spacing b/w words */
+    word-spacing: 10px;
+
+    /* text-shadow --> Controls the shadow of text */
+    text-shadow: 3px 8px 3px grey;
+}
