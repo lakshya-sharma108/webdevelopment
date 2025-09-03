@@ -9,3 +9,36 @@ h3{
     color: rgb(145, 17, 137) !important;
     font-size: 30px;
 }
+
+
+/* Element Selector */
+h1{
+    color:cornflowerblue;
+}
+
+/* Group Selector */
+h6, p{
+    color: seagreen;
+    font-size: 35px;
+}
+
+/* Universal Selector */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Id Selector */
+#xyz{
+    color: darkorange;
+    background-color: black;
+    font-size: 25px;
+}
+
+/* Class Selector */
+.class1{
+    background-color: rgb(255, 216, 169);
+    color: purple;
+    font-size: 20px;
+}
