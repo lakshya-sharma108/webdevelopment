@@ -62,5 +62,24 @@
     word-spacing: 10px;
 
     /* text-shadow --> Controls the shadow of text */
-    text-shadow: 3px 8px 3px grey;
+    text-shadow: 3px 6px 3px grey;
 }
+
+
+
+    /* From here we starts CSS COLOR Practice------------------------------------------------------------------------------------------------ */
+    .color1{
+        text-align: center;
+        font-size: 35px;
+
+        /* 1. RGB */
+        color: rgb(13, 173, 109); /* Red Color */
+    }
+
+    .color2{
+        text-align: center;
+        font-size: 30px;
+
+        /* 1. RGBA */
+        color: rgba(255, 0, 0, 0.7); /* Red Color with opacity */
+    }
