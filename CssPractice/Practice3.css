@@ -1,5 +1,5 @@
 *{
-    margin: 0;
+    margin: 10;
     padding: 0;
 }
 
@@ -17,4 +17,29 @@
 
     /* Width, color, style can be written in short-hand property ---> all 3 in 1 */
     /* border: 5px teal dashed; */
+
+    /* border-radius --> Controls the roundness of border */
+    border-radius: 25px;
+
+    /* to control specific corners of border */
+    /* border-top-left-radius --> Controls the roundness of top-left corner of border */
+    /* border-top-right-radius --> Controls the roundness of top-right corner of border */
+    /* border-bottom-left-radius --> Controls the roundness of bottom-left corner of border */ 
+    /* border-bottom-right-radius --> Controls the roundness of bottom-right corner of border */
+
+
+
+
+}
+
+
+#border2{
+    text-align: center;
+   
+    border: 5px chocolate dashed;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    border-bottom-style: solid;
+    border-right-style: solid;
 }
