@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#border{
+    text-align: center;
+
+    /* Controls the width of border */
+    border-width: 5px;
+
+    /* Controls the color of border */
+    border-color: teal;
+
+    /* Controls the style of border like: solid, dashed, dotted, double, groove, ridge, inset, outset, none etc. */
+    border-style: dashed;
+
+    /* Width, color, style can be written in short-hand property ---> all 3 in 1 */
+    /* border: 5px teal dashed; */
+}
