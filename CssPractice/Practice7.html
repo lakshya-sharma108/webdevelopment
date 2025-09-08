@@ -11,6 +11,10 @@
             padding: 10px;
             height: 200px;
             width: 200px;
+
+            /* This property will make the Block element behave like Inline element */
+            /* display: inline; */
+            /* Note: You can use either inline or inline-block, not both together. */
         }
 
         #inline{
@@ -19,10 +23,31 @@
             padding: 10px;
             height: 200px;
             width: 200px;
+
+            /* This property will make the Inline element behave like Block element */ 
+            /* This will make the inline element behave like both inline and block element */
+            /* Note: You can use either inline-block or block, not both together. */
+            display: inline-block;
+        }
+
+        h1, h2 {
+            /* This property will make the Block element behave like both Inline and Block element */
+            display: inline-block;
+        }
+
+        #span{
+            /* display: block; */
+            border: 2px solid cadetblue;
+            margin: 10px;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
+
+    <h1>Heading 1st</h1>
+    <h2>Heading 2nd</h2>
+
     <div id="block">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro amet corrupti exercitationem magnam aliquam quis hic neque tenetur inventore ex quibusdam ea aut distinctio consequatur nemo, vero soluta facilis. Perspiciatis.
     </div>
@@ -30,6 +55,8 @@
     <span id="inline">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor quia molestias sunt autem quasi neque deserunt libero, vitae numquam! Provident ea veniam modi aliquam. Ad a porro quod debitis labore.
     </span>
+
+    <span id="span">After using "display:Inline-block;" property the previous span is now work like both -- Inline and block</span>
 
     <!-- 
         In which element element properties like width, height, margin, padding, border will work properly?
