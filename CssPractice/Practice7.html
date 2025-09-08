@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline and Block Elements</title>
+    <style>
+        #block{
+            border: 2px solid black;
+            margin: 10px;
+            padding: 10px;
+            height: 200px;
+            width: 200px;
+        }
+
+        #inline{
+            border: 2px solid red;
+            margin: 10px;
+            padding: 10px;
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="block">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro amet corrupti exercitationem magnam aliquam quis hic neque tenetur inventore ex quibusdam ea aut distinctio consequatur nemo, vero soluta facilis. Perspiciatis.
+    </div>
+
+    <span id="inline">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor quia molestias sunt autem quasi neque deserunt libero, vitae numquam! Provident ea veniam modi aliquam. Ad a porro quod debitis labore.
+    </span>
+
+    <!-- 
+        In which element element properties like width, height, margin, padding, border will work properly?
+                      Inline element              Block element
+        Margin         No                          Yes
+        Padding        No                          Yes
+        Border         No                          Yes
+        Width          No                          Yes
+        Height         No                          Yes
+
+        So, the answer is Block element.
+
+        Now, what's the solution to make these properties work in inline element?
+        The solution is to change the display property of inline element to inline-block or block.
+
+        Example:
+        #inline{
+            display: inline-block;  <--- or you can use display: block;
+            border: 2px solid red;
+            margin: 10px;
+            padding: 10px;
+            height: 200px;
+            width: 200px;
+        }
+    -->
+</body>
+</html>
