@@ -77,7 +77,33 @@
     <!-- 
         NOTE :- but we can change the inline element into block element 
                 and block element into inline element
-     -->
+
+
+        
+        In which element element properties like width, height, margin, padding, border will work properly?
+                      Inline element              Block element
+        Margin         No                          Yes
+        Padding        No                          Yes
+        Border         No                          Yes
+        Width          No                          Yes
+        Height         No                          Yes
+
+        So, the answer is Block element.
+
+        Now, what's the solution to make these properties work in inline element?
+        The solution is to change the display property of inline element to inline-block or block.
+
+        Example:
+        #inline{
+            display: inline-block;  <--- or you can use display: block;
+            border: 2px solid red;
+            margin: 10px;
+            padding: 10px;
+            height: 200px;
+            width: 200px;
+        }
+    -->
+
                 
     <a href="https://google.com">Google</a>
     <span>hii, myself span and i am a inline element</span>
