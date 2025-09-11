@@ -47,18 +47,22 @@
             background-color: rgb(255, 187, 97);
 
             /* If we change the position to absolute then the element is positioned relative to its nearest positioned ancestor instead of positioned relative to the viewport, if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling */
-            position: absolute;
-            top: 0px;
+            /* position: absolute;
+            top: 0px; */
         }
         .box4{
             background-color: purple;
 
             /* Position fixed is used to position an element relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and left properties are used to position the element */
-            position: fixed;
+            /* position: fixed; */
         }
 
         .box5{
             background-color:darkolivegreen;
+
+            /* Sticky position is a hybrid of relative and fixed position. The element is treated as relative positioned until it crosses a specified threshold, at which point it is treated as fixed positioned. */
+            position: sticky;
+            top: 0;
     
         }
 
