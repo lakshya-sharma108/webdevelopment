@@ -11,28 +11,6 @@
             padding: 0;
         }
 
-        .box1{
-            background-color: aqua;
-            
-            /* Position of an element is by default static which dosen't allow to use top, bottom, left, right properties */
-            top: 30px;
-            left: 50px;
-        }
-        .box2{
-            background-color: rgb(203, 221, 221);
-
-            /* Changing the position to relative allows to use top, bottom, left, right and z-index properties */
-            position: relative;
-            top: 30px;
-            left: 50px;
-        }
-        .box3{
-            background-color: antiquewhite;
-        }
-        .box4{
-            background-color: purple;
-        }
-
         .box{
             height: 133px;
             width: 50%;
@@ -42,11 +20,48 @@
         }
 
         .parent{
+            height: 1500px;
             padding: 43px;
             margin: 34px;
             border: 2px solid purple;
+            position: relative;
             
         }
+
+        .box1{
+            background-color: aqua;
+            
+            /* Position of an element is by default static which dosen't allow to use top, bottom, left, right properties */
+            /* top: 30px;
+            left: 50px; */
+        }
+        .box2{
+            background-color: rgb(159, 185, 185);
+
+            /* Changing the position to relative allows to use top, bottom, left, right and z-index properties */
+            /* position: relative;
+            top: 30px;
+            left: 50px; */
+        }
+        .box3{
+            background-color: rgb(255, 187, 97);
+
+            /* If we change the position to absolute then the element is positioned relative to its nearest positioned ancestor instead of positioned relative to the viewport, if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling */
+            position: absolute;
+            top: 0px;
+        }
+        .box4{
+            background-color: purple;
+
+            /* Position fixed is used to position an element relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and left properties are used to position the element */
+            position: fixed;
+        }
+
+        .box5{
+            background-color:darkolivegreen;
+    
+        }
+
 
      </style>
 </head>
@@ -56,6 +71,7 @@
         <div class="box box2"></div>
         <div class="box box3"></div>
         <div class="box box4"></div>
+        <div class="box box5"></div>
     </div>
 </body>
 </html>
