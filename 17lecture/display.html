@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Properties</title>
+    <style>
+        #container {
+            height: 100px;
+            width: 400px;
+            border: 2px solid black;
+            background-color: blueviolet;
+
+            /* element will not be displayed and completely removed */
+            /* display: none;  */
+
+            /* element will take space but not visible */
+            /* visibility: hidden; */
+
+            /* this will make elemetn work like inline element but width and height will not work properly */
+            /* display: inline; */
+
+            /* this will make element behave like inline element and properties will work like block element */
+            /* this is Recommended */
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Display Properties and Flex Box</h1>
+
+    <!-- 
+        What is Inline and Block Element?
+        1. Inline Element: An inline element does not start on a new line and only takes up as much width as necessary. 
+        Examples include <span>, <a>, and <img>. You cannot set the width and height of inline elements.
+
+        2. Block Element: A block element starts on a new line and takes up the full width available (by default). 
+        Examples include <div>, <p>, and <h1> to <h6>. You can set the width and height of block elements.
+    -->
+    <!-- 
+
+    What are display properties?
+    Display properties in CSS determine how an element is displayed on a web page. They control the layout and behavior of elements in relation to each other. 
+
+    Properties of display:
+        block, inline, inline-block, none, flex, grid 
+
+        1. none: element will not be displayed -- totally removed from the page
+        2. visibility: hidden; element will take space but not visible
+        3. inline: element will behave like inline element but width and height will not work properly
+        4. block: element will behave like block element
+        5. inline-block: element will behave like inline element and properties will work like block element
+
+    -->
+
+    <div id="container"></div>
+    <span>Lorem ipsum dolor sit amet.</span>
+    <span>Lorem ipsum dolor sit amet.</span>
+</body>
+</html>
