@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Box</title>
+    <style>
+        /* Parent Box Properties */
+        #container{
+            /* display-flex will make all the child elements flex items, 
+            and arrange them in a row */
+            display: flex;
+
+            /* "justify-content"  <-- Supporting properties */
+            /* 1. All items move to the center of the parent element */
+            /* justify-content: center;  */
+
+            /* 2. All items move to the start of the parent element */
+            /* justify-content: flex-start; */
+
+            /* 3. All items move to the end of the parent element */
+            /* justify-content: flex-end; */
+
+            /* 4. First item at the start, last item at the end, even spacing between items */
+            /* justify-content: space-between; */
+
+            /* 5. Equal space around all items */
+            /* justify-content: space-around; */
+
+            /* Equal space evereywhere */
+            justify-content: space-evenly;
+        }
+
+        .box{
+            height: 200px;
+            background-color: cadetblue;
+            border: 2px dashed black;
+            /* width: 200px; */
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="item-1" class="box">item-1</div>
+        <div id="item-2" class="box">item-2</div>
+        <div id="item-3" class="box">item-3</div>
+        <div id="item-4" class="box">item-4</div>
+        <div id="item-5" class="box">item-5</div>
+        <div id="item-6" class="box">item-6</div>
+        <div id="item-7" class="box">item-7</div>
+        <div id="item-8" class="box">item-8</div>
+        <div id="item-9" class="box">item-9</div>
+        <div id="item-10" class="box">item-10</div>
+    </div>
+</body>
+</html>
