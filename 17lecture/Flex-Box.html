@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flex Box</title>
     <style>
+        
+
         /* Parent Box Properties */
         #container{
+            background-color: brown;
+            height: 750px;
+
+
+
             /* display-flex will make all the child elements flex items, 
             and arrange them in a row */
             display: flex;
 
+
             /* "justify-content"  <-- Supporting properties */
             /* 1. All items move to the center of the parent element */
-            /* justify-content: center;  */
+            justify-content: center; 
 
             /* 2. All items move to the start of the parent element */
             /* justify-content: flex-start; */
@@ -27,16 +35,77 @@
             /* 5. Equal space around all items */
             /* justify-content: space-around; */
 
-            /* Equal space evereywhere */
-            justify-content: space-evenly;
+            /* 6. Equal space evereywhere */
+            /* justify-content: space-evenly; */
+
+
+
+            /* Align-item property will work vertically on you elements 
+            Default value of align item is stretch*/
+            /* 1. Items stretch to fill the containers height */
+            /* align-items: stretch; */
+
+            /* 2. Items move to the center vertically */
+            align-items: center;
+
+            /* 3. Items stick to the top of the container */
+            /* align-items: flex-start; */
+
+            /* 4. Items stick to the bottom the container */
+            /* align-items: flex-end; */
+
+
+
+            /* the flex wrap property tells the browser whether the flex items should stay in one line or wrap onto multiple lines if there's no space -- unlike display-flex, in flex wrap width of child elements works properly */
+            flex-wrap: wrap;
+
+
+
+            /* Gap property simply adds space between flex or grid items -- this is totally different from margin */
+            gap: 10px;
+            /* row-gap: 20px; */
+            /* column-gap: 20px; */
+
+
+
+            /* flex direction property is used to reverse the flow of justify content and align item also it is used to reverse the direction of rows and columns */
+            /* flex-direction: row; */
+            /* flex-direction: column; */
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column-reverse; */
+
+
+
+            /* Align-content */
+            /* align-content: center; */
+
         }
 
+
+
+
+        /* Child elements properties */
         .box{
-            height: 200px;
+            /* height: 200px; */
             background-color: cadetblue;
             border: 2px dashed black;
-            /* width: 200px; */
-            display: inline-block;
+            width: 100px;
+            /* display: inline-block; */
+
+        }
+
+
+
+
+        /* Particular child element properties */
+        #item-3{
+
+            /* 1. Align self -- */
+            align-self: baseline;
+
+            /* 2. Order */
+            order: 1;
+
         }
     </style>
 </head>
