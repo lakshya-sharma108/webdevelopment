@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grid Concept</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            height: 100vh;
+        }
+
         .box{
             /* height: 200px; */
             background-color: cadetblue;
-            border: 2px solid beige;
+            /* border: 2px solid beige; */
         }
 
         .container{
+            height: 100%;
             background-color: brown;
 
             /* This property converts the container into grid */
@@ -24,11 +34,35 @@
             /* grid-template-columns: 100px 50px 200px 300px 100px; */
 
             /* giving width in fraction helps cover whole width */
-            grid-template-columns: 1fr 2fr  3fr 4fr;
+            grid-template-columns: 1fr 2fr  3fr;
 
             /* This property defines the size of each row */
-            grid-template-rows: 50px 300px 100px;
+            /* grid-template-rows: 50px 300px 100px; */
 
+
+            gap: 10px;
+        }
+
+        #box-1{
+            /* grid-column-start: 1;
+            grid-column-end: 3; */
+
+
+            /* shorthand property */
+            grid-column: 1/3;
+        }
+
+        #box-3{
+            /* grid-row-start: 2;
+            grid-row-end: 4; */
+
+
+            /* shorthand property */
+            grid-row: 2/4;
+        }
+
+        #box-4{
+            grid-row: 2/4;
         }
     </style>
 </head>
