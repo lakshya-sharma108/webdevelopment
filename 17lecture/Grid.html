@@ -58,13 +58,21 @@
 
 
             /* shorthand property */
-            grid-row: 2/4;
+            /* grid-row: 2/4; */
         }
 
-        #box-4{
+        #box-5{
+
+            /* This will move item-4 to first instead of it's own place (middle) */
             grid-row: 2/4;
+
+            /* SOLUTION: We have to ensure column position as well */
+            grid-column: 3/4;
+
         }
+
     </style>
+
 </head>
 
 <body>
