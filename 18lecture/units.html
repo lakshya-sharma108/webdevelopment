@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Units</title>
+
+    <style>
+        #container{
+            background-color: rgb(155, 1, 155);
+            border: 3px solid black;
+            border-radius: 15px;
+
+            /* 
+                In CSS, “sizing units” basically tell the browser how big or small something should be — like width, height, font size, padding, margin, etc.
+
+                Types of CSS Sizing Units
+                    There are two main families:
+                    1. Absolute Units → fixed, don’t change.
+                    2. Relative Units → flexible, adjust according to screen/parent.
+
+
+
+                1. Absolute Units (fixed like a brick)
+                These don’t care about screen size. What you set is what you get.
+                    px → pixels. Most common unit. Example: width: 200px; (always 200 pixels wide).
+
+                    cm, mm, in → centimeters, millimeters, inches. Rarely used on screens (more for print).
+
+                    pt (points) → mostly for print (1pt = 1/72 of an inch).
+
+                    pc (picas) → also for print.
+
+                Problem: Not responsive. A box of 500px width might look fine on desktop but huge on a mobile screen.
+
+
+
+                2. Relative Units (flexible like rubber band)
+                These adjust based on parent element, viewport, or font size. Much better for responsive design.
+
+                Font-based units --
+                em → relative to the parent element’s font-size.
+                Example: if font-size: 16px;, then 2em = 32px.
+
+                rem → relative to the root (html) font-size.
+                Example: if html { font-size: 16px; }, then 2rem = 32px everywhere.
+                --More predictable than em.
+
+
+                Viewport-based units (based on screen size) --
+                vw → 1% of viewport width.
+                Example: 50vw = half of the screen width.
+
+                vh → 1% of viewport height.
+                Example: 100vh = full screen height.
+
+                vmin → 1% of the smaller side (width/height).
+                vmax → 1% of the larger side.
+
+
+                Percentage % --
+                Relative to parent’s size.
+                Example: width: 50%; means half of parent’s width.
+
+
+                New Dynamic Units (CSS Level 4)--
+                svh, lvh, dvh → improved vh units for mobile browsers (fixes issues with address bar resizing).
+
+
+                Note:- Viweport means the full screen ( horizontally and vertically)
+            */
+
+
+            /* width: 400px;
+            height: 300px; */
+
+            /* width: 50vw;
+            height: 300px; */
+
+            /* width: 50vw;
+            height: 50vh; */
+            
+
+            /* If just adjacent parent doesn't have any height or width the element also not get any height or width */
+            width: 50%;
+            height: 50%;
+        }
+
+        .parent{
+            height: 30vh;
+            width: 40vw;
+        }
+
+
+
+
+        /* em and rem works on inheritance */
+        .container2{
+            background-color: blueviolet;
+            font-size: 30px;
+
+            /* 
+                1. em inherit values from its current parent element
+                ex: if parent has font-size: 30px; then the child elements value will be -
+                1em = 30px (current value of parent element)
+                2em = 60px (current value of parent element x 2)
+            
+            */
+
+
+            /* 
+                2. rem inherit values from root (html) element and root elements by default value is 16px
+                ex: if root has font-size: 16px; then the child elements value will be -
+                1rem = 16px (current value of root element)
+                2rem = 32px (current value of root element x 2)
+            
+            */
+        }
+
+        #heading{
+            /* em inherits from current parent element */
+            font-size: 1em;
+        }
+
+        #para{
+            /* rem inherits from root elements */
+            font-size: 2rem;
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+    <!-- 
+        Units --  px, vh, vw, %, em, rem
+    -->
+    
+    <div class="parent">
+        <div id="container"></div>
+    </div>
+
+
+    <div class="container2">
+        <h1 id="heading">First Heading</h1>
+        <p id="para">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum eligendi nihil necessitatibus reiciendis qui molestias aut, quod esse consectetur quas suscipit maiores vitae possimus culpa?</p>
+    </div>
+
+</body>
+</html>
