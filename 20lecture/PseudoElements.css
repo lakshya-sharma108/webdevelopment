@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 10px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.container::before{
+    content: " ";
+    display: inline-block;
+    height: 3px;
+    width: 100px;
+    background-color: blueviolet;
+    position: relative;
+    bottom: -4.px;
+    left: 115px;
+}
