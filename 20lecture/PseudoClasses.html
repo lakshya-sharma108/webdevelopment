@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Classes</title>
+    <link rel="stylesheet" href="/20lecture/Pseudo.css">
+</head>
+<body>
+    <h1>Pseudo Classes</h1>
+    <hr>
+
+
+    <a href="https://www.youtube.com">Google</a>
+    <br>
+    <button>Sumbit</button>
+    <br>
+    
+
+
+
+
+
+
+
+    <!-- 
+        What is a pseudo-class? 
+            A pseudo-class targets elements not by HTML class but by state or position.
+            You write them with a single colon: a:hover, input:checked, li:first-child.
+            They select elements because of how the element behaves or where it sits in the DOM, not because someone added class="...".
+
+
+
+        Pseudo-Classess (starts with : ) --
+            :link → Unvisited links.
+            :visited → Links the user has already visited (very limited styling allowed, privacy reasons).
+            :hover → When the mouse is over the element.
+            Example: button turns red on hover.
+            :active → While the element is being clicked/pressed.
+            Example: button shrinks when pressed.
+            :focus → When element is focused (e.g., clicked input or tabbed to with keyboard).
+
+            Form & Inputs:--
+            :checked → Checked checkboxes, radios, or selected <option>.
+            :indeterminate → Checkbox in an in-between state (set via JS).
+            :disabled → Disabled inputs.
+            :enabled → Enabled inputs.
+            :required → Input fields marked as required.
+            :optional → Inputs that are not required.
+            :valid → Input passes validation (e.g., a proper email format in type="email"). 
+            :invalid → Input fails validation.
+            :in-range → Number input inside its min/max range.
+            :out-of-range → Number input outside allowed range.
+            :placeholder-shown → Input showing placeholder text.
+
+            Structure / Position:--
+            :first-child → The first child of a parent.
+            :last-child → The last child of a parent.
+            :only-child → When an element is the only child of its parent.
+            :nth-child(n) → Selects the nth child (1-based). You can use formulas like 2n (even), 2n+1 (odd).
+            :nth-last-child(n) → Like nth-child, but counting from the end.
+            :first-of-type → First element of its type among siblings (e.g., first <p>).
+            :last-of-type → Last element of its type.
+            :only-of-type → When element is the only one of that type inside parent.
+            :nth-of-type(n) → Nth element of its type.
+            :nth-last-of-type(n) → Like above but from the end.
+            :empty → Elements with no content at all (not even whitespace).
+            :root → The root element of the document (<html> in HTML).
+            :scope → The element you’re currently using as a reference in CSS (rare, but powerful in :has() context).
+
+            Functional Helpers:--
+            :not(selector) → Selects everything except the given selector.
+            Example: p:not(.intro) = all <p> except those with class .intro.
+            :is(selector, selector) → Groups multiple selectors into one. Keeps the highest specificity.
+            :where(selector, selector) → Like :is() but has zero specificity → easy to override.
+            :has(selector) → Selects an element that contains something inside. Example: div:has(img) selects divs with images inside.
+
+            Special ones:--
+            :default → Input element that is the default option (like default radio).
+            :read-only → Input that cannot be edited.
+            :read-write → Input that can be edited.
+    -->
+</body>
+</html>

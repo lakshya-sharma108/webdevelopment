@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 15px;
+    text-align: center;
+    font-size: 40px;
+}
+
+
+
+/* Link pseudo class */
+a:link{
+    padding: 10px;
+    border: 2px solid blue;
+}
+
+/* Hover pseudo class */
+a:hover{
+    padding: 10px;
+    border: 2px solid brown;
+    background-color: brown;
+    color: white;
+}
+
+/* Active pseudo class -- we always use single colon (:) for pseudo classes */
+a:active{
+    border: 2px solid rgb(103, 27, 27);
+    background-color: rgb(103, 27, 27);
+    color: white;
+}
+
+/* Visited pseudo class */
+a:visited{
+    border: 2px solid rgb(0, 205, 205);
+    background-color: rgb(0, 205, 205);
+    color: black;
+}
+
+
+
+
+
+button{
+    background-color: transparent;
+    padding: 10px;
+    border: 2px solid orange;
+    color: orange;
+}
+
+button:active{
+    background-color: orange;
+    color: white;
+}
+
+
+
