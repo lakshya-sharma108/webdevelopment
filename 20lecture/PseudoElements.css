@@ -1,17 +1,82 @@
-*{
+* {
     padding: 0;
     margin: 10px;
     text-align: center;
-    font-size: 40px;
+    font-size: 25px;
 }
 
-.container::before{
-    content: " ";
-    display: inline-block;
-    height: 3px;
-    width: 100px;
+
+/* Use of ::before and ::after pseudo elements */
+.container::before {
+    content: "Hello ji";
     background-color: blueviolet;
-    position: relative;
-    bottom: -4.px;
-    left: 115px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.container::after {
+    content: "The End";
+    background-color: blueviolet;
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+
+
+/* Use of ::first-line, ::first-letter and ::selection */
+.container2::first-line {
+    background-color: brown;
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+
+.container2::first-letter {
+    background-color: rgb(42, 165, 50);
+    color: white;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+.container2::selection {
+    background-color: purple;
+    color: white;
+}
+
+
+
+/* ::placeholder */
+#input1::placeholder {
+    color: teal;
+    font-size: 20px;
+    font-family: sans-serif;
+    background-color: violet;
+}
+
+/* ::file-selector-button */
+input[type="file"]::file-selector-button {
+    width: 100px;
+    border: 2px solid orange;
+    padding: 5px;
+    background-color: orange;
+    color: white;
+    border-radius: 20px;
+}
+
+/* ::marker */
+li::marker {
+    color: crimson;
+    font-size: 1.5em;
 }

@@ -1,19 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pseudo elements</title>
     <link rel="stylesheet" href="/20lecture/PseudoElements.css">
 </head>
+
 <body>
     <h1>Pseudo Elements</h1>
     <hr>
 
-    <!-- Pseudo Elements -- before, after, selection, placeholder, first-letter, first-line -->
+    <!-- 
+        Pseudo Elements -- before, after, selection, placeholder, first-letter, first-line
+        
+        These don’t select existing elements, they create virtual elements inside.
+        We always use double colon (::) before with pseudo elements.
+
+        Content helpers
+        ::before → Creates a box before the element’s content. Needs content: property to show something.
+        ::after → Creates a box after the element’s content. Also needs content:.
+                  (used for icons, decorations, tooltips, quotes, etc.)
+
+        Text-level
+        ::first-line → Styles only the first line of text in a block.
+        ::first-letter → Styles only the first letter of text (drop caps effect).
+        ::selection → Styles the text when it’s highlighted/selected.
+
+        Input-related
+        ::placeholder → Styles the placeholder text of an input.
+        ::file-selector-button → Styles the "Choose file" button of file inputs.
+        ::marker → Styles list item markers (like bullets, numbers).
+        ::cue → Styles captions/subtitles in <video> with WebVTT.
+        ::part(name) → Styles shadow DOM parts with given name.
+        ::slotted(selector) → Styles slotted content in shadow DOM.
+
+
+
+        Key Notes
+        Pseudo-elements act like extra inline elements → they don’t exist in HTML, but CSS makes them “appear.”
+        They’re great for decorations, icons, extra info, first-letter styling, custom bullets, and accessibility tweaks.
+        Most common ones you’ll use in real projects: ::before, ::after, ::first-letter, ::first-line, ::selection, ::placeholder, ::marker.
+        
+    -->
 
     <div class="container">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus consequuntur, porro suscipit optio quia beatae quam velit corporis dicta quo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, repellat.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus consequuntur, p velit corporis dicta quo.
+        Dolorem, repellat.
     </div>
+
+    <div class="container2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsum vero, a quae vel alias quisquam dolores
+        magnam doloribus doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, voluptates.
+    </div>
+
+    <input id="input1" type="text" placeholder="Enter Your Name">
+
+    <input type="file">
+
+    <ul>
+        <li>Apples</li>
+        <li>Bananas</li>
+    </ul>
+
 </body>
+
 </html>
