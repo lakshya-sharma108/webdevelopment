@@ -1,0 +1,48 @@
+        .box {
+            height: 50px;
+            width: 50px;
+            background-color: beige;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Transform-Rotate */
+            transform: rotate(50deg);
+            /* transform: rotate(0.25turn); */
+            /* transform: rotateX(70deg); */
+            /* transform: rotateY(70deg); */
+            /* transform: rotateZ(50deg); */
+
+
+            /* Transform-Scale */
+            /* transform: scale(1.5); */
+            /* transform: scaleY(1.5); */
+            /* transform: scaleX(2); */
+
+
+            /* Transform-Skew */
+            /* transform: skew(10deg); */
+            /* transform: skewX(40deg); */
+            /* transform: skewY(40deg); */
+
+
+            /* Transform-Translate -- most used */
+            /* transform: translate(30px); */
+            /* transform: translateX(50%); */
+            /* transform: translateY(80%); */
+
+
+            /* Multiple properties at once */
+            /* transform: translateY(100%) skew(40deg) translateX(45%); */
+
+
+            /* Transform-origin */
+            transform-origin: bottom right;
+        }
+
+        .container {
+            width: 100vw;
+            height: 80vh;
+            border: 2px solid purple;
+        }

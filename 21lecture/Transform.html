@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transforms</title>
+    <link rel="stylesheet" href="/21lecture/transform.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box">
+            Box
+        </div>
+    </div>
+
+    <!-- 
+        Think of transform as a magic tool that bends, flips, spins, and reshapes elements in 2D or 3D space — without changing the actual HTML layout.
+
+        The transform property in CSS lets you apply 2D or 3D transformations such as:
+        -Moving (translate)
+        -Rotating
+        -Scaling (resize)
+        -Skewing (slanting)
+        -Or combining them together
+
+
+        Rotate:
+        rotate(45deg) → 2D rotation on the plane
+        rotateX(45deg) → rotates around the X-axis (3D flip top/bottom)
+        rotateY(45deg) → rotates around the Y-axis (3D flip left/right)
+        rotateZ(45deg) → same as rotate() (2D rotation)
+
+        Scale:
+        scaleX(2) → double width
+        scaleY(0.5) → half height
+        scale(2, 0.5) → wider, but squashed vertically
+
+        Skew:
+        skewX(20deg) → slants horizontally
+        skewY(10deg) → slants vertically
+
+        Translate:
+        translateX(50px) → moves only horizontally
+        translateY(20px) → moves only vertically
+        translateZ(100px) → moves in 3D space (toward/away from you, needs perspective)
+
+
+
+        Important Notes:
+        Transforms do not affect the flow of the document (other elements don’t “see” the movement).
+        Best combined with transition or animation for smooth effects.
+        GPU accelerates transforms → they are performance-friendly for animations.
+
+    -->
+
+</body>
+
+</html>
