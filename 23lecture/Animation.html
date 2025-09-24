@@ -4,67 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Animation</title>
-    <!-- <link rel="stylesheet" href="/23lecture/animation.css"> -->
-     <style>
-        .container{
-            background-color: rgb(131, 195, 195);
-            height: 80vh;
-            width: 60vw;
-        }
+    <link rel="stylesheet" href="/23lecture/animation.css">
 
-        .box{
-            height: 60px;
-            width: 80px;
-            background-color:tomato;
-
-
-            /* applying animation on box */
-            /* animation-name: MyAnimation;
-            animation-duration: 1s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease;
-            animation-delay: 1s;
-            animation-direction: alternate-reverse;
-            animation-play-state: paused; */
-
-            /* Animation shorthand */
-            animation: MyAnimation 1.2s ease 1s infinite alternate-reverse;
-
-
-            /* animation: animation2 1.2s ease 1s infinite normal; */
-
-
-        }
-
-
-        /* These are the keyframes -- name could be anything */
-        @keyframes MyAnimation {
-            from{
-
-            }
-            to{
-                transform: translateX(200px) translateY(200px);
-            }
-            
-        }
-
-        /* We can also use multiple keyframes/animations */
-        @keyframes animation2 {
-            0%{
-                transform: rotate(30deg);
-            }
-            25%{
-                background-color: blue;
-            }
-            50%{
-                height: 80px;
-                width: 100px;
-            }
-            100%{
-                transform: rotate(50deg);
-            }
-        }
-     </style>
 </head>
 <body>
     
@@ -106,7 +47,13 @@
     -->
 
     <div class="container">
-        <div class="box">box</div>
+        <div class="box1 box"></div>
+        <div class="box2 box"></div>
+        <div class="box3 box"></div>
+        <div class="box4 box"></div>
+        <div class="box5 box"></div>
+        <div class="box6 box"></div>
+        <div class="box7 box"></div>
     </div>
 
 </body>
