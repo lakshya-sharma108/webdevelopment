@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation</title>
+    <!-- <link rel="stylesheet" href="/23lecture/animation.css"> -->
+     <style>
+        .container{
+            background-color: rgb(131, 195, 195);
+            height: 80vh;
+            width: 60vw;
+        }
+
+        .box{
+            height: 60px;
+            width: 80px;
+            background-color:tomato;
+
+
+            /* applying animation on box */
+            /* animation-name: MyAnimation;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease;
+            animation-delay: 1s;
+            animation-direction: alternate-reverse;
+            animation-play-state: paused; */
+
+            /* Animation shorthand */
+            animation: MyAnimation 1.2s ease 1s infinite alternate-reverse;
+
+
+            /* animation: animation2 1.2s ease 1s infinite normal; */
+
+
+        }
+
+
+        /* These are the keyframes -- name could be anything */
+        @keyframes MyAnimation {
+            from{
+
+            }
+            to{
+                transform: translateX(200px) translateY(200px);
+            }
+            
+        }
+
+        /* We can also use multiple keyframes/animations */
+        @keyframes animation2 {
+            0%{
+                transform: rotate(30deg);
+            }
+            25%{
+                background-color: blue;
+            }
+            50%{
+                height: 80px;
+                width: 100px;
+            }
+            100%{
+                transform: rotate(50deg);
+            }
+        }
+     </style>
+</head>
+<body>
+    
+    <!-- 
+        What is CSS Animation?
+        Definition:
+        CSS animation is a way to make HTML elements move or change their style smoothly, without using JavaScript or Flash.
+
+        Animations are built on two pillars:
+        1. Transitions → Changes between two states (like hover effects).
+        2. Animations → More complex, multi-step movements controlled with @keyframes.
+
+        If transitions are like “walking from A to B,”
+        then animations are like “dancing through A → B → C → D with rhythm.”
+
+
+        Key Concepts of CSS Animation
+        1. @keyframes:
+        Defines steps of the animation.
+        Each step is written with a percentage (0% → start, 100% → end).
+        Example: fade in an element
+
+        2. animation Property:
+        It tells the browser what animation to play and how to play it.
+        Main sub-properties:
+        animation-name → The name of your keyframe (like fadeIn).
+        animation-duration → How long it runs (2s, 500ms).
+        animation-timing-function → Speed curve (ease, linear, ease-in, ease-out).
+        animation-delay → Wait before starting.
+        animation-iteration-count → How many times (1, infinite).
+        animation-direction → Normal, reverse, alternate.
+        animation-fill-mode → Controls how element looks before/after animation (none, forwards, backwards, both).
+        animation-play-state → Running or paused.
+
+        You can write them separately OR in a shorthand like this:
+        animation: fadeIn 2s ease-in-out 0s infinite alternate;
+
+
+    -->
+
+    <div class="container">
+        <div class="box">box</div>
+    </div>
+
+</body>
+</html>
