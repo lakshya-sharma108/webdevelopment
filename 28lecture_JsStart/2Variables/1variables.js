@@ -109,3 +109,83 @@ myObject.age = 21;
 console.log(myObject); // Output: { name: "Lakshaya", age: 21 }
 // myObject = { name: "Sharma", age: 22 }; // Error: Assignment to constant variable.
 // console.log(myObject);
+
+
+
+
+/*
+
+Scope of Variables:
+Scope in JavaScript means “where in the code a variable can be accessed or used.”
+
+1. Global Scope: --> var
+Variables declared outside any function or block have global scope and can be accessed from anywhere in the code.
+
+2. Local/Functional Scope: --> var -- in case of function "var" behaves like "let" and "const"
+Variables declared within a function are local to that function and cannot be accessed from outside the function.
+
+3. Block Scope: --> let, const
+Variables declared with let or const inside a block (e.g., inside curly braces {}) are limited to that block and cannot be accessed from outside the block.
+*/
+
+
+// Global Scope Example:
+var globalVar = "I am a global variable";
+console.log(globalVar); // Accessible anywhere
+
+{
+    // Accessing global variable inside a block
+    console.log(globalVar);
+
+    {
+        // Accessing global variable inside a nested block
+        console.log(globalVar);
+    }
+}
+
+
+
+
+
+// Block Scope Example:
+// let:
+{
+    let blockVar = "I am a block-scoped variable";
+    console.log(blockVar); // Accessible inside the block
+
+    {
+        console.log(blockVar); // Accessible inside the nested block
+    }
+}
+// console.log(blockVar); // Not accessible outside the block (Error)
+
+
+// const:
+// const blockConst = "I am a block-scoped const variable";
+// console.log(blockConst); // Accessible inside the block
+
+{
+    const blockConst = "I am a block-scoped const variable";
+    console.log(blockConst); // Accessible inside the nested block
+    {
+        console.log(blockConst); // Accessible inside the nested block
+    }
+}
+// console.log(blockConst); // Not accessible outside the block (Error)
+
+
+
+
+
+// Local/Functional Scope Example:
+// console.log(localVar); // Not accessible outside the function (Error)
+// In case of function "var" avoides hoisting issue
+function myFunction() {
+    var localVar = "I am a local/functional variable";
+    // console.log(localVar);
+}
+// console.log(localVar);  // Not accessible outside the function (Error)
+
+myFunction(); // Calling the function to see the output
+
+// console.log(localVar);  // Not accessible outside the function (Error)
