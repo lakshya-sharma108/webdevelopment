@@ -33,6 +33,7 @@ if (marks >= 90) {
 }
 
 
+console.log("Switch Statement -----------------------------------------------------------------------------------")
 // switch statement:
 // Used when you have many conditions for one variable.
 // Uses strict comparison (===).
@@ -65,6 +66,7 @@ switch (day) {
 }
 
 
+console.log("Ternary Operator -----------------------------------------------------------------------------------")
 // Ternary Operator (?:)
 // Shortcut for simple if...else.
 // Syntax: (condition) ? "stmt for true" : "stmt for false";
@@ -78,6 +80,7 @@ console.log(result);
 
 // Loop's:
 
+console.log("For loop -----------------------------------------------------------------------------------")
 // 1. For-loop:
 let value = 10;
 for (let i = 0; i <= value; i++) {
@@ -91,6 +94,7 @@ for (let index = 0; index < arr.length; index++) {
 
 
 
+console.log("While loop -----------------------------------------------------------------------------------")
 // 2. while loop:
 // Repeats as long as condition is true.
 let count = 0;
@@ -101,6 +105,7 @@ while (count <= 8) {
 
 
 
+console.log("Do-while loop -----------------------------------------------------------------------------------")
 // 3. do...while loop:
 // Runs at least once, then checks condition.
 let i = 0;
@@ -110,10 +115,36 @@ do {
 } while (i > 5);
 
 
-// CAN'T UNDERSTAND!!!
+
+console.log("For...in loop -----------------------------------------------------------------------------------")
 // 4. for...in (objects):
-// Iterates over keys (property names) of an object.
+// Iterates over keys or index of an object or array
+
 let person = { name: "Buddy", age: 21, address: "Btp" };
 for (let key in person) {
-  console.log(key, person[key]);
+
+  // For-in returns key/index
+  console.log(key);
+  console.log(person[key]);
+
+}
+
+let array = ["lakshaya", 8, 2004, true ]
+for(let ele in array){
+
+  // For-in returns index/key
+  console.log(ele)
+  console.log(array[ele])
+}
+
+
+
+console.log("For...of loop -----------------------------------------------------------------------------------")
+// 5. For-of loop
+// 
+let myArr = ["Rohit", "btp", 123, true]
+for(let item of myArr){
+
+  // For-of returns direct values
+  console.log(item)
 }
