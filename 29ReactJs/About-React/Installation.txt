@@ -1,0 +1,81 @@
+React Installation Process:
+
+
+Note: 
+1. Make sure you have a good internet connection
+2. Make sure you have node.js downloaded already
+
+
+
+
+
+1 — Open VS Code & terminal
+
+    Open the project folder (or create one) in VS Code.
+
+    In Explorer: File → Open Folder… and pick/create a folder.
+
+    Open an integrated terminal: `Ctrl + `` (backtick) or View → Terminal.
+
+
+2 — Verify Node and npm
+
+    Run these commands:
+
+    node -v
+    npm -v
+
+    You should see version numbers. If either fails, Node isn’t installed correctly.
+
+
+3 — Create a new Vite React app (interactive):
+
+    Run this command in terminal:
+
+    npm create vite@latest my-react-app
+
+    When prompted: choose react (or react-ts if you want TypeScript) and press Enter.
+
+
+                        Or one-liner prompt:
+
+    npm create vite@latest my-react-app -- --template react
+
+    # or for TypeScript:
+    npm create vite@latest my-react-app -- --template react-ts
+
+
+4 — Move into the folder:
+
+    cd my-react-app
+
+
+5 — Install dependencies:
+
+    Run:
+
+    npm install
+
+
+6 — Start the dev server:
+
+    Run:
+
+    npm run dev
+
+
+It will print a local URL like http://localhost:5173. Open that in your browser.
+
+
+
+
+
+
+
+
+
+What to open in VS Code
+
+src/App.jsx (or src/main.jsx for Vite) — main component.
+package.json — scripts and dependencies (start, dev, build, etc).
+Open the project with code . if you want to launch VS Code from the terminal.
