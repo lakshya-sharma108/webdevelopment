@@ -44,6 +44,7 @@ Ruls to creaate a React Component:
 1. First letter of react component file's name should be in CAPITAL letter
 2. Inside .jsx file there must be a javascript function which return's react component-
    -- mixture of html and javascript or only html
+3. JavaScript part of component function must be inside in --> {}
 3. Function name same as file name considered as good practice <-- this is not rule
 
 To use the component function---
