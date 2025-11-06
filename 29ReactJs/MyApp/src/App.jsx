@@ -15,7 +15,11 @@ function App() {
     <div>
       {/* <Navbar/> */}
       {/* <Home/> */}
-      <Card/>
+
+      {/* All Products will show in the middle of the web page because
+          of App.css and index.css 
+      */}
+      <Card/> 
       <Card/>
       <Card/>
       <Card/>
