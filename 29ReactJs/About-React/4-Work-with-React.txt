@@ -1,0 +1,54 @@
+
+Work With React:
+1. In react app/folder we only work insie "src/assets" folder
+2. Inside "src/assets" we are allow to change/update only 3 files-
+   1. App.jsx
+   2. index.css
+   3. App.css
+3. We can create multiple .jsx files but we use them inside "App.jsx"
+4. "App.jsx" is also called root file of a react web app
+
+
+--> Files with .jsx extention is called React Component files
+--> Inside .jsx file there is a react component in the form of a function,
+    which return something
+--> The part of that react component function which returned by function is the main thing
+--> The return part of the component function is mixture of "html" and "javascript"
+
+--> It is necessary that a component function must return something 
+--> The returned thing must be the mixture of "html" and "javascript" or only "html"
+--> Everything that a component function returns must be inside in a single parent tag
+    Example:
+    1. Wrong:
+        <div>
+            Hello World!
+        </div>
+        <h1> Hello ji </h1>
+        <p> lorem spum temtine kdsfk </p>
+    
+    2. Right:
+        <div>
+            <div>
+                Hello World!
+            </div>
+            <h1> Hello ji </h1>
+            <p> lorem spum temtine kdsfk </p>
+        </div>
+
+
+
+
+
+
+Ruls to creaate a React Component:
+1. First letter of react component file's name should be in CAPITAL letter
+2. Inside .jsx file there must be a javascript function which return's react component-
+   -- mixture of html and javascript or only html
+3. Function name same as file name considered as good practice <-- this is not rule
+
+To use the component function---
+1. Export that component functio
+   if multiple component -- Named Export
+   if single component -- Default Export
+2. Import that component function in "App.jsx" file
+3. Use that imported function return of "App.jsx" like this --> < componentName />
