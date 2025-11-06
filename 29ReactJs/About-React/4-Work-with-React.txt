@@ -17,7 +17,7 @@ Work With React:
 
 --> It is necessary that a component function must return something 
 --> The returned thing must be the mixture of "html" and "javascript" or only "html"
---> Everything that a component function returns must be inside in a single parent tag
+--> Everything that a component function returns must be bind in a single parent tag
     Example:
     1. Wrong:
         <div>
