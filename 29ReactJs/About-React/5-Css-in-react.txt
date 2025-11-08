@@ -1,0 +1,26 @@
+
+How to appyly CSS on React Components:
+
+Things to know:
+There is already 2 files for CSS in any react app
+    1. App.CSS
+    2. index.CSS
+These files are already connected to App.jsx and Main.jsx so you 
+can apply CSS in any both of them
+
+You never provide Internal CSS because there is only one html files
+
+If you creating another CSS file, then you have to import it
+import syntax: import "/fileAddress";
+
+Class keyword is reserved in react, so if you ever want to provide class
+to a Component then use className instead of class
+
+
+
+
+
+
+For External CSS:
+1. Provide id or className to the Components
+2. Apply CSS using id or className, inside App.css or index.css

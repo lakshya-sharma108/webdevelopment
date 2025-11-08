@@ -27,19 +27,73 @@
 // 2. Consoling the value of props 
 
 
+// function Card(props) {
+
+//     // props value console -- it will give you a object of child components data
+//     console.log(props);
+
+//     // Consoling props objects values
+//     console.log(props.image);
+//     console.log(props.title);
+//     console.log(props.price);
+
+//     return (
+//         // Passing props values -- always provide js value inside component then use -> {}
+//         <div>
+//             <img src={props.image} alt="" width="250" />
+//             <h2>{props.title}</h2>
+//             <p>Rs. {props.price}</p>
+//         </div>
+//     )
+// }
+
+
+
+
+
+
+
+
+// CSS Practice:
+
+// For External Css -> E:\web development\29ReactJs\About-React\5-Css-in-react.txt
+
+// Inline Css -> React accept inline css in the form of object --> {{ yourCss }}
+// Syntax ->  style={{ yourCss }}   <-- Always use camelCase
+
+// function Card(props) {
+
+//     return (
+//         <div id="Card" className="CardClass" style={{backgroundColor: "black", padding: "20px", color: "white" }}>
+//             <img src={props.image} alt="" width="250" />
+//             <h2>{props.title}</h2>
+//             <p>Rs. {props.price}</p>
+//         </div>
+//     )
+// }
+
+
+
+
+
+
+
+// Storing CSS in a object:
+
+// Single Css in a object
+const styles = {
+    backgroundColor: "rgb(253, 244, 232)", 
+    padding: "20px", 
+    color: "black",
+    borderRadius : "15px",
+    boxShadow : "#bababa 1px 1px 7px",
+    textAlign : "center"
+}
+
 function Card(props) {
 
-    // props value console -- it will give you a object of child components data
-    console.log(props);
-
-    // Consoling props objects values
-    console.log(props.image);
-    console.log(props.title);
-    console.log(props.price);
-
     return (
-        // Passing props values -- always provide js value inside component then use -> {}
-        <div>
+        <div id="Card" className="CardClass" style={styles}>
             <img src={props.image} alt="" width="250" />
             <h2>{props.title}</h2>
             <p>Rs. {props.price}</p>

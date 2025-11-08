@@ -215,7 +215,7 @@ function App() {
   const firstName = 'Lakshaya';
   
   return (
-    <div>
+    <div style={styles.container}>
 
       <Card image="https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/primary/ProductShowcasesampleimages/JPEG/Product+Showcase-1.jpg" title="Dhoom Machale Shoes" price={25000}/> 
 
@@ -234,6 +234,17 @@ function App() {
   )
 }
 
+
+// Multiple Css in a object:
+const styles = {
+  container : {
+    display : "flex",
+    gap : "20px",
+    flexWrap : "wrap",
+    justifyContent : "center"
+  }
+    
+}
 
 
 export default App

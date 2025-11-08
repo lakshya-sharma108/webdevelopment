@@ -1,0 +1,30 @@
+
+/* Providing css using id */
+/* #Card{
+    background-color: antiquewhite;
+    padding: 20px;
+    font-family: sans-serif;
+} */
+
+
+
+/* Providing css using class */
+/* .CardClass{
+    background-color: rgb(253, 244, 232);
+    padding: 20px;
+    font-family: sans-serif;
+} */
+
+
+*{
+    font-family: sans-serif;
+}
+
+img{
+    border-radius: 15px;
+}
+
+p{
+    font-weight: bold;
+    font-style: italic;
+}
