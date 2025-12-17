@@ -141,10 +141,45 @@ for(let ele in array){
 
 console.log("For...of loop -----------------------------------------------------------------------------------")
 // 5. For-of loop
-// 
+// only iterable with arrays not with objects
 let myArr = ["Rohit", "btp", 123, true]
 for(let item of myArr){
 
   // For-of returns direct values
   console.log(item)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// for ( ; ; ) {
+//   console.log("hello ji");
+// }
+
+
+let obj = {
+  name: "LAKSHAYA",
+  age: 21,
+  address: 'btp'
+}
+
+let array1 = [1, 2, 3, 4, 5, 6];
+
+for (const element of array1) {
+  console.log(element);
+}
+
+for (const key in obj) {
+  console.log(key);
+  
 }

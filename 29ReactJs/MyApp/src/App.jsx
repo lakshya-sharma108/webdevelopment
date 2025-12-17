@@ -65,7 +65,6 @@ import Card from './Card'
 
 
 
-
 // Practice-3:
 
 // Creating 2 buttons-
