@@ -68,3 +68,37 @@ function faultyCalc(a, b, operator) {
 //    6 for %
 
 console.log('sum of your numbers is : '+faultyCalc(3, 3, 6));
+
+
+
+
+
+
+
+
+
+
+
+
+
+// second and easy way to create a faulty calculator:
+function faulty(a, b, op) {
+    let obj = {
+        "+": "-",
+        "*": "+",
+        "-": "/",
+        "/": "**",
+    }
+
+    let random = Math.random();
+
+    if (random > 0.1) {
+        console.log(`the result is ${eval(`${a} ${op} ${b}`)}`);
+    }
+    else{
+        op = obj[op];
+        console.log(`the result is ${eval(`${a} ${op} ${b}`)}`);
+    }
+}
+
+faulty(2, 3, "+");
