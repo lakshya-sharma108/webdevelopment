@@ -93,3 +93,17 @@ console.log(cont.children[3].nextElementSibling);
 console.log(cont.children[3].previousElementSibling);
 
 
+
+
+
+
+
+
+
+
+
+// DOM Selectors:
+
+
+
+
