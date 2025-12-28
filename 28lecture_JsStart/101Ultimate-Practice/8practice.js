@@ -56,23 +56,23 @@ console.log(cont.firstElementChild);
 console.log(cont.lastElementChild);
 
 // applying css on child nodes:
-cont.firstElementChild.style.backgroundColor = "Yellow";
-cont.lastElementChild.style.backgroundColor = "teal";
+// cont.firstElementChild.style.backgroundColor = "Yellow";
+// cont.lastElementChild.style.backgroundColor = "teal";
 
 
 
 // accessing parent node
-console.log(cont.firstElementChild.parentElement);
+// console.log(cont.firstElementChild.parentElement);
 
 // applying css on parent child
-cont.firstElementChild.parentElement.style.display = "flex";
+// cont.firstElementChild.parentElement.style.display = "flex";
 
 
 
 // accessing all child nodes 
-console.log(cont.children);
+// console.log(cont.children);
 // or we can also do this
-console.log(document.body.firstElementChild.children);
+// console.log(document.body.firstElementChild.children);
 
 
 
@@ -89,8 +89,10 @@ console.log(document.body.firstElementChild.children);
 
 
 // accessing sibling nodes
-console.log(cont.children[3].nextElementSibling);
-console.log(cont.children[3].previousElementSibling);
+// console.log(cont.children[3].nextElementSibling);
+// console.log(cont.children[3].previousElementSibling);
+
+
 
 
 
@@ -104,6 +106,29 @@ console.log(cont.children[3].previousElementSibling);
 
 // DOM Selectors:
 
+// selecting element by class name:
+let boxes = document.getElementsByClassName("box2");
+
+boxes[0].style.backgroundColor = "red";
+boxes[1].style.backgroundColor = "teal";
+boxes[2].style.backgroundColor = "brown";
+boxes[3].style.backgroundColor = "yellow";
+boxes[4].style.backgroundColor = "green";
 
 
+// selecting element by id:  mostly used to select a particular element
+let dabba = document.getElementById("dabba");
+
+dabba.style.width = "200px";
+
+
+// query selector:  works for both - class/id
+//1. selects only first-occurrence/first-match
+document.querySelector(".box2").style.height = "120px";
+
+// 2. selects all-occurrence
+// let allBox = document.querySelectorAll(".box2");
+// for (const index in allBox) {
+//     allBox[index].style.height = "120px";
+// }
 
