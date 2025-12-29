@@ -116,6 +116,8 @@ boxes[3].style.backgroundColor = "yellow";
 boxes[4].style.backgroundColor = "green";
 
 
+
+
 // selecting element by id:  mostly used to select a particular element
 let dabba = document.getElementById("dabba");
 
