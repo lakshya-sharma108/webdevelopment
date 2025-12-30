@@ -18,6 +18,7 @@ console.log(myDiv);
     textContent used to print/manipulate hidden text
 */
 
+
 // innerHTML:
 myDiv.innerHTML = "Hello ji, kya haal chal!";
 // innerText:
