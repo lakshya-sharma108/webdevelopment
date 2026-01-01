@@ -132,3 +132,24 @@ document.querySelector(".box2").style.height = "120px";
 //     allBox[index].style.height = "120px";
 // }
 
+
+document.querySelectorAll(".box2").forEach(e=>{
+    e.style.border = "10px solid blue";
+})
+
+
+
+// selecting elements by tagname:
+let elementsByName = document.getElementsByTagName("h1");
+
+for (const key in elementsByName) {
+    elementsByName[key].style.width = "60vw"
+    elementsByName[key].style.border = "3px dashed black"
+    elementsByName[key].style.backgroundColor = "antiquewhite"
+}
+
+
+
+
+
+// some more useful methods:- matches, closest and contains
