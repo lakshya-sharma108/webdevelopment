@@ -100,7 +100,6 @@ console.log(document.querySelector(".box3").dataset);
 
 
 
-
 // Insertion Methods:
 
 let div = document.createElement("div");
@@ -121,6 +120,7 @@ document.querySelector(".container").before(div);
 
 
 
+
 // insertAdjacentHTML --
 let ele = document.querySelector(".box3");
 
@@ -135,8 +135,6 @@ ele.insertAdjacentHTML("beforeend", "<i>i am adjecent element just before node e
 
 // 4. afterend -- insert just after node ends
 ele.insertAdjacentHTML("afterend", "<i>i am adjecent element just after node ends</i>");
-
-
 
 
 // remove -- remove elements
