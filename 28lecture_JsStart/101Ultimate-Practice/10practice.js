@@ -146,4 +146,26 @@ khatam.remove();
 
 
 
+// className and classList:
+
+console.log(document.querySelector(".dabba").classList);
+console.log(document.querySelector(".dabba").className);
+
+document.querySelector(".dabba").classList.remove("bg-green")
+document.querySelector(".dabba").classList.add("ek-dabba")
+
+console.log(document.querySelector(".dabba").classList);
+
+
+// toggle - toggle is just like not operator- 
+// if true make it false 
+// if false make it true
+
+// if class not exists if will add and if class exists it will remove
+document.querySelector(".dabba").classList.toggle("red");
+
+console.log(document.querySelector(".dabba").classList);
+
+
+
 
