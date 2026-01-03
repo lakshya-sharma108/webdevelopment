@@ -74,3 +74,76 @@ console.log(document.querySelector(".box").getAttribute("style"));
 
 // 11. attributes -- give you all the attributes a element holds
 console.log(document.querySelector(".box").attributes);
+
+
+// 12. removeAttribute -- remove a particular attribute
+document.querySelector(".box").removeAttribute("style");
+console.log(document.querySelector(".box").getAttribute("style"));
+
+
+// 13. designMode -- allow to edit any webpage on internet
+// document.designMode = "on";
+
+
+// 14. dataSet -- gives you the data inside a particular element
+console.log(document.querySelector(".box3").dataset);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Insertion Methods:
+
+let div = document.createElement("div");
+div.innerHTML = "<b>This element is inserted using JS</b>";
+div.setAttribute("class", "created");
+
+// 1. append -- this will insert the element at the end, inside the node
+document.querySelector(".container").append(div);
+
+// 2. after -- this will insert the element just after node ends
+document.querySelector(".container").after(div);
+
+// 3. prepend -- this will insert the element in the begning, inside the node
+document.querySelector(".container").prepend(div);
+
+// 4. before -- this will insert the element just before node starts
+document.querySelector(".container").before(div);
+
+
+
+// insertAdjacentHTML --
+let ele = document.querySelector(".box3");
+
+// 1. afterbegin -- insert just after node starts
+ele.insertAdjacentHTML("afterbegin", "<i>i am adjecent element just after node begin</i>");
+
+// 2. beforebegin -- insert just before node starts
+ele.insertAdjacentHTML("beforebegin", "<i>i am adjecent element just before node begin</i>");
+
+// 3. beforeend -- insert just before node ends
+ele.insertAdjacentHTML("beforeend", "<i>i am adjecent element just before node ends</i>");
+
+// 4. afterend -- insert just after node ends
+ele.insertAdjacentHTML("afterend", "<i>i am adjecent element just after node ends</i>");
+
+
+
+
+// remove -- remove elements
+let khatam = document.querySelector(".box4");
+khatam.remove();
+
+
+
+
+
