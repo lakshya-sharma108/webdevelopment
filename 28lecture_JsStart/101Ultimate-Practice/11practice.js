@@ -10,7 +10,7 @@ function addCard(title, thumbnail, duration, time, views, author) {
 
     // card title
     let cardTitle = document.createElement("div");
-    document.querySelector(".card").append(cardTitle);
+    div.append(cardTitle);
     cardTitle.innerHTML = title;
     cardTitle.setAttribute("class", "title-card");
 
@@ -31,16 +31,21 @@ function addCard(title, thumbnail, duration, time, views, author) {
 
 
     let bottomDiv = document.createElement("div");
-    document.querySelector(".title-card").append(bottomDiv);
+    cardTitle.append(bottomDiv);
     bottomDiv.setAttribute("class", "bottomDiv");
 
     bottomDiv.style.width = "100%";
+    bottomDiv.style.padding = "5px";
+    bottomDiv.style.margin = "5px";
+
+
+
 
 
 
     // author styling
     let div2 = document.createElement("span");
-    document.querySelector(".bottomDiv").append(div2);
+    bottomDiv.append(div2);
     div2.innerHTML = author;
     div2.setAttribute("class", "author");
 
@@ -58,7 +63,7 @@ function addCard(title, thumbnail, duration, time, views, author) {
 
     // views styling
     let div4 = document.createElement("span");
-    document.querySelector(".bottomDiv").append(div4);
+    bottomDiv.append(div4);
     div4.innerHTML = views + "K views";
     div4.setAttribute("class", "time");
 
@@ -74,7 +79,7 @@ function addCard(title, thumbnail, duration, time, views, author) {
 
     // time styling
     let div3 = document.createElement("span");
-    document.querySelector(".bottomDiv").append(div3);
+    bottomDiv.append(div3);
     div3.innerHTML = time + " months ago";
     div3.setAttribute("class", "time");
 
@@ -118,7 +123,7 @@ function addCard(title, thumbnail, duration, time, views, author) {
     thumbWrapper.append(durationSpan);
 
     durationSpan.style.position = "absolute";
-    durationSpan.style.bottom = "6px";
+    durationSpan.style.bottom = "5px";
     durationSpan.style.right = "2px";
     durationSpan.style.backgroundColor = "black";
     durationSpan.style.color = "white";
@@ -134,4 +139,12 @@ function addCard(title, thumbnail, duration, time, views, author) {
 
 addCard("How to master the art of communication!!! | #mastercommnication", "./0Images/1image.jpeg", "20:13", 3, 360, "Lucky Sharma");
 
+addCard("Learn JavaScript in 1 Hour | JavaScript Tutorial for Beginners", "./0Images/2image.jpg", "1:02:45", 6, 420, "Code with Harry");
 
+addCard("Learn HTML in 1 Hour | HTML Tutorial for Beginners", "./0Images/3image.png", "1:15:30", 12, 580, "Code with Harry");
+
+addCard("Learn CSS in 1 Hour | CSS Tutorial for Beginners", "./0Images/4image.jpeg", "1:10:20", 9, 480, "Code with Harry");
+
+//addCard("Learn ReactJS in 1 Hour | ReactJS Tutorial for Beginners", "./0Images/5image.jpg", "1:25:50", 4, 390, "Code with Harry");  
+
+addCard("Learn NodeJS in 1 Hour | NodeJS Tutorial for Beginners", "./0Images/6image.jpg", "1:30:10", 5, 410, "Code with Harry");
