@@ -1,7 +1,5 @@
 // creating card using js:
 
-document.body.style.backgroundColor = "antiquewhite"
-
 function addCard(title, thumbnail, duration, time, views, author) {
 
     let div = document.createElement("div");
@@ -64,11 +62,11 @@ function addCard(title, thumbnail, duration, time, views, author) {
     // views styling
     let div4 = document.createElement("span");
     bottomDiv.append(div4);
-    div4.innerHTML = views + "K views";
+    div4.innerHTML = "• "+views + "K views";
     div4.setAttribute("class", "time");
 
     div4.style.width = "50%"
-    div4.style.marginLeft = "10px"
+    div4.style.marginLeft = "5px"
     div4.style.marginTop = "5px"
     // div4.style.paddingLeft = "10px"
     div4.style.fontSize = "12px";
@@ -80,13 +78,13 @@ function addCard(title, thumbnail, duration, time, views, author) {
     // time styling
     let div3 = document.createElement("span");
     bottomDiv.append(div3);
-    div3.innerHTML = time + " months ago";
+    div3.innerHTML = "• "+time + " months ago";
     div3.setAttribute("class", "time");
 
     div3.style.width = "30%"
     div3.style.marginLeft = "5px"
     div3.style.marginTop = "5px"
-    div3.style.paddingLeft = "10px"
+    //div3.style.paddingLeft = "10px"
     div3.style.fontSize = "12px";
     div3.style.fontWeight = "300";
     div3.style.color = "grey";
