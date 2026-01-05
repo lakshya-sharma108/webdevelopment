@@ -27,4 +27,41 @@ button.addEventListener("click", ()=>{
 
 
 
-// 
+// Event Bubbling:
+
+// Example:
+// document.querySelector(".container2").addEventListener("click", ()=>{
+//     window.alert("Container2 was clicked!!!");
+// })
+
+// document.querySelector(".childContainer").addEventListener("click", ()=>{
+//     window.alert("childContainer was clicked!!!");
+// })
+
+// document.querySelector(".child").addEventListener("click", ()=>{
+//     window.alert("child box was clicked!!!");
+// })
+
+
+
+// In the above example if we trigger a child then all the parents of that child will trigger automatically -- this is called Event Bubbling
+
+
+
+// Solution:  stopPropagation();
+// To stop event bubbling we will take a Event object in arrow function ("e") and inside arrow function we will do -> e.stopPropagation();  this will stop event bubbling
+
+document.querySelector(".container2").addEventListener("click", (e)=>{
+    e.stopPropagation();
+    window.alert("Container2 was clicked!!!");
+})
+
+document.querySelector(".childContainer").addEventListener("click", (e)=>{
+    e.stopPropagation();
+    window.alert("childContainer was clicked!!!");
+})
+
+document.querySelector(".child").addEventListener("click", (e)=>{
+    e.stopPropagation();
+    window.alert("child box was clicked!!!");
+})
