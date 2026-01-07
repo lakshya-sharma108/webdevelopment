@@ -89,6 +89,8 @@ prom1
 
 
 
+
+
 // let apiProm = new Promise((resolve, reject) => {
 //     let random = Math.random();
 //     if (random < 0.6) {
@@ -110,8 +112,6 @@ prom1
 //     .catch((error) => {
 //         console.log("Error: " + error);
 //     })
-
-
 
 
 
