@@ -37,6 +37,15 @@ loadScript(8, 2, div);
 // Solution: Promises
 
 
+
+
+
+
+
+
+
+
+
 // Promise: 
 // Promise is like a container for future value -- something that will be avaiable later
 
@@ -135,3 +144,15 @@ prom1
 //     .catch((error) => {
 //         console.log("API failed!!");
 //     })
+
+
+
+
+
+
+// Important promise methods:
+// 1. Promise.all = if all promises resolved then it returns a array of results of all promeses  -- but if even a single promise fails it returns erroe
+
+// 2. Promise.race == It returns the result of a promise, whoever resolved first
+
+// 3. Promise.sattled == It waits for all no matter success or failure and returns the result in object format for each promise

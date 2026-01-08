@@ -26,7 +26,7 @@ async function printData() {
     return new Promise((resolve, reject) => {  
         setTimeout(() => {
             resolve("promise is fullfilled!!!")
-        }, 3000);
+        }, 1500);
     })
 }
 
@@ -48,5 +48,27 @@ async function main() {
     console.log("after function task completed!!!");
 }
 
-
 main();
+
+
+
+
+
+
+
+
+
+// In this e.g. we are using a fake api to fetch data
+async function getData() {
+    let rowData = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    let data = await rowData.json();
+
+    console.log(data);
+}
+
+
+async function main2() {
+    getData();
+}
+
+main2();
