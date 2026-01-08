@@ -23,7 +23,7 @@
 // Example:
 
 async function printData() {
-    return new Promise((resolve, reject) => {  
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve("promise is fullfilled!!!")
         }, 1500);
@@ -32,14 +32,14 @@ async function printData() {
 
 
 async function main() {
-    
-    
+
+
     // without async and await js will not wait for time taking task to complete and complete other tasks 
     // console.log("before function task completed!!!");
     // printData();
     // console.log("after function task completed!!!");
- 
-    
+
+
 
     // but with async and await it will wait to complete the other tasks
     console.log("before function task completed!!!");
