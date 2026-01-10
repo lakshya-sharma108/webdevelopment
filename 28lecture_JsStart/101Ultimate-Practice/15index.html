@@ -355,6 +355,7 @@
     document.addEventListener('mousedown',()=>pressTimer=setTimeout(end,3000));
     document.addEventListener('mouseup',()=>clearTimeout(pressTimer));
 
+    
     function end(){
       clearInterval(cdTimer);
       clearTimeout(flashTimer);
