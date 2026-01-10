@@ -3,199 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>System Terminal</title>
+  <title>Loading...</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
     html,body{width:100%;height:100%;background:#000;color:#00ff66;font-family:Courier New,monospace;overflow:hidden}
     body.center{display:flex;align-items:center;justify-content:center}
 
     /* Terminal */
-    #terminal{width:100%;height:100%;padding:18px;font-size:14px;line-height:1.55;white-space:pre-wrap;overflow-y:auto;scrollbar-width:none}
+    #terminal{width:100%;height:100%;padding:18px;font-size:13px;line-height:1.55;white-space:pre-wrap;overflow-y:auto;scrollbar-width:none}
     #terminal::-webkit-scrollbar{display:none}
 
-    /* Warning escalation */
+    /* ULTRA Warning escalation */
     body.warning{color:#ff0000;background:#0a0000}
-    body.warning #terminal{filter:contrast(1.3) brightness(1.1)}
+    body.warning #terminal{filter:contrast(1.4) brightness(1.2) saturate(1.5)}
 
-    /* Intense shake and glitch */
-    .shake{animation:shake .2s infinite}
-    @keyframes shake{0%{transform:translate(0) rotate(0deg)}20%{transform:translate(-2px,2px) rotate(0.5deg)}40%{transform:translate(2px,-2px) rotate(-0.5deg)}60%{transform:translate(-2px,-2px) rotate(0.5deg)}80%{transform:translate(2px,2px) rotate(-0.5deg)}100%{transform:translate(0) rotate(0deg)}}
+    /* EXTREME shake and glitch */
+    .shake{animation:shake .15s infinite}
+    @keyframes shake{0%{transform:translate(0,0) rotate(0deg)}10%{transform:translate(-3px,3px) rotate(1deg)}20%{transform:translate(3px,-3px) rotate(-1deg)}30%{transform:translate(-3px,-3px) rotate(1deg)}40%{transform:translate(3px,3px) rotate(-1deg)}50%{transform:translate(-2px,2px) rotate(0.5deg)}60%{transform:translate(2px,-2px) rotate(-0.5deg)}70%{transform:translate(-3px,2px) rotate(1deg)}80%{transform:translate(3px,-3px) rotate(-1deg)}90%{transform:translate(-2px,-2px) rotate(0.5deg)}100%{transform:translate(0,0) rotate(0deg)}}
     
-    .flicker{animation:flicker .08s infinite}
-    @keyframes flicker{0%{opacity:1}20%{opacity:.7}40%{opacity:1}60%{opacity:.6}80%{opacity:1}100%{opacity:.8}}
+    .flicker{animation:flicker .06s infinite}
+    @keyframes flicker{0%{opacity:1}15%{opacity:.5}30%{opacity:1}45%{opacity:.6}60%{opacity:1}75%{opacity:.4}90%{opacity:1}100%{opacity:.7}}
 
-    /* Aggressive glitch overlay */
+    /* Multi-layer glitch */
     #glitch{pointer-events:none;position:fixed;inset:0;z-index:5;opacity:0;background:
-      repeating-linear-gradient(0deg,rgba(255,0,0,.15) 0,rgba(255,0,0,.15) 2px,transparent 2px,transparent 4px),
-      repeating-linear-gradient(90deg,rgba(0,255,0,.08) 0,rgba(0,255,0,.08) 3px,transparent 3px,transparent 6px),
-      radial-gradient(circle at 50% 50%, rgba(255,0,0,.2), transparent 60%);
-    animation:glitchShift .15s infinite}
-    @keyframes glitchShift{0%{transform:translate(0)}25%{transform:translate(-3px,2px)}50%{transform:translate(3px,-2px)}75%{transform:translate(-2px,-3px)}100%{transform:translate(0)}}
+      repeating-linear-gradient(0deg,rgba(255,0,0,.2) 0,rgba(255,0,0,.2) 2px,transparent 2px,transparent 4px),
+      repeating-linear-gradient(90deg,rgba(0,255,0,.1) 0,rgba(0,255,0,.1) 3px,transparent 3px,transparent 6px),
+      radial-gradient(circle at 50% 50%, rgba(255,0,0,.3), transparent 50%);
+    animation:glitchShift .1s infinite}
+    @keyframes glitchShift{0%{transform:translate(0,0) skewX(0deg)}20%{transform:translate(-4px,3px) skewX(2deg)}40%{transform:translate(4px,-3px) skewX(-2deg)}60%{transform:translate(-3px,-4px) skewX(1deg)}80%{transform:translate(3px,4px) skewX(-1deg)}100%{transform:translate(0,0) skewX(0deg)}}
 
-    /* Flash effects */
+    #glitch2{pointer-events:none;position:fixed;inset:0;z-index:6;opacity:0;mix-blend-mode:difference}
+    #glitch2::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,#f00 0%,transparent 50%,#0f0 100%);animation:glitchRGB .2s infinite}
+    @keyframes glitchRGB{0%{opacity:.3;transform:translate(0)}33%{opacity:.5;transform:translate(-5px,5px)}66%{opacity:.4;transform:translate(5px,-5px)}100%{opacity:.3;transform:translate(0)}}
+
+    /* Intense flash */
     #flash{pointer-events:none;position:fixed;inset:0;background:#ff0000;opacity:0;z-index:7;mix-blend-mode:screen}
     
-    /* Scan line effect */
-    #scanline{pointer-events:none;position:fixed;inset:0;opacity:0;z-index:6;background:linear-gradient(rgba(255,0,0,.3) 50%,transparent 50%);background-size:100% 4px;animation:scan 8s linear infinite}
+    /* Multiple scan lines */
+    #scanline{pointer-events:none;position:fixed;inset:0;opacity:0;z-index:6;background:linear-gradient(rgba(255,0,0,.4) 50%,transparent 50%);background-size:100% 3px;animation:scan 6s linear infinite}
     @keyframes scan{0%{background-position:0 0}100%{background-position:0 100%}}
 
+    #scanline2{pointer-events:none;position:fixed;inset:0;opacity:0;z-index:6;background:linear-gradient(90deg,rgba(255,255,0,.2) 50%,transparent 50%);background-size:4px 100%;animation:scanH 8s linear infinite}
+    @keyframes scanH{0%{background-position:0 0}100%{background-position:100% 0}}
+
     /* Overlays */
-    #startOverlay{position:fixed;inset:0;background:#000;color:#00ff66;display:flex;align-items:center;justify-content:center;z-index:10;font-size:18px;text-align:center}
+    #startOverlay{position:fixed;inset:0;background:#000;color:#00ff66;display:flex;align-items:center;justify-content:center;z-index:10;font-size:18px;text-align:center;cursor:pointer}
     
-    #countdown{position:fixed;top:16px;right:16px;color:#ff0000;font-size:18px;font-weight:bold;opacity:0;z-index:8;text-shadow:0 0 10px #ff0000;animation:pulse 1s infinite}
-    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+    /* MASSIVE countdown */
+    #countdown{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);color:#ff0000;font-size:80px;font-weight:bold;opacity:0;z-index:9;text-shadow:0 0 20px #ff0000,0 0 40px #ff0000;animation:megaPulse .8s infinite}
+    @keyframes megaPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.2)}}
 
-    #modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.95);z-index:8;backdrop-filter:blur(3px)}
-    #modal .box{border:3px solid #ff0000;padding:24px;color:#ff0000;max-width:90%;text-align:left;background:#000;box-shadow:0 0 30px rgba(255,0,0,.5),inset 0 0 20px rgba(255,0,0,.2);animation:modalShake .3s infinite}
-    @keyframes modalShake{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-    #modal .box div{margin:8px 0;font-size:13px}
-    #modal .warning-header{font-size:20px;font-weight:bold;margin-bottom:16px;text-align:center;animation:blink .5s infinite}
-    @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:.3}}
+    /* Countdown corner */
+    #countdownCorner{position:fixed;top:16px;right:16px;color:#ff0000;font-size:16px;font-weight:bold;opacity:0;z-index:8;text-shadow:0 0 10px #ff0000}
 
-    /* Camera overlay */
-    #camera{position:fixed;top:20px;left:20px;width:120px;height:90px;border:2px solid #ff0000;background:#000;z-index:8;opacity:0;box-shadow:0 0 20px rgba(255,0,0,.6)}
-    #camera::before{content:'REC ●';position:absolute;top:5px;left:5px;color:#ff0000;font-size:10px;animation:blink .8s infinite}
-    #camera::after{content:'';position:absolute;inset:8px;background:radial-gradient(circle,rgba(255,0,0,.15),transparent);animation:camPulse 2s infinite}
-    @keyframes camPulse{0%,100%{opacity:.3}50%{opacity:.7}}
+    /* Enhanced modal */
+    #modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.97);z-index:8;backdrop-filter:blur(5px)}
+    #modal .box{border:4px solid #ff0000;padding:28px;color:#ff0000;max-width:92%;text-align:left;background:#000;box-shadow:0 0 40px rgba(255,0,0,.7),inset 0 0 30px rgba(255,0,0,.3);animation:modalShake .25s infinite}
+    @keyframes modalShake{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-3px) rotate(0.5deg)}50%{transform:translateY(0) rotate(0deg)}75%{transform:translateY(-3px) rotate(-0.5deg)}}
+    #modal .box div{margin:10px 0;font-size:14px}
+    #modal .warning-header{font-size:22px;font-weight:bold;margin-bottom:18px;text-align:center;animation:blink .4s infinite}
+    @keyframes blink{0%,40%{opacity:1}41%,100%{opacity:.2}}
 
-    #exitHint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:10px;color:#004400;opacity:0}
-    #reveal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;color:#00ff66;font-size:22px;z-index:9;background:#000}
+    /* Camera feed */
+    #camera{position:fixed;top:20px;left:20px;width:140px;height:105px;border:3px solid #ff0000;background:#000;z-index:8;opacity:0;box-shadow:0 0 25px rgba(255,0,0,.8)}
+    #camera::before{content:'● REC';position:absolute;top:5px;left:5px;color:#ff0000;font-size:11px;font-weight:bold;animation:blink .6s infinite}
+    #camera::after{content:'';position:absolute;inset:8px;background:radial-gradient(circle,rgba(255,0,0,.2),transparent);animation:camPulse 1.5s infinite}
+    @keyframes camPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.1)}}
+
+    /* GPS tracker */
+    #gps{position:fixed;top:20px;right:20px;width:120px;height:80px;border:2px solid #ff0000;background:#000;z-index:8;opacity:0;padding:8px;font-size:9px}
+    #gps::before{content:'GPS TRACKING';position:absolute;top:3px;left:50%;transform:translateX(-50%);color:#ff0000;font-size:8px;font-weight:bold}
+    #gps .dot{position:absolute;width:6px;height:6px;background:#ff0000;border-radius:50%;top:50%;left:50%;animation:ping 1s infinite;box-shadow:0 0 10px #ff0000}
+    @keyframes ping{0%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-50%) scale(3);opacity:0}}
+
+    /* Warning bars */
+    #warningBar{position:fixed;top:0;left:0;right:0;height:40px;background:repeating-linear-gradient(45deg,#ff0000,#ff0000 20px,#000 20px,#000 40px);opacity:0;z-index:7;animation:barSlide 1s linear infinite}
+    @keyframes barSlide{0%{transform:translateX(0)}100%{transform:translateX(40px)}}
+
+    /* Skull/warning icon */
+    #skull{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:120px;opacity:0;z-index:7;animation:skullPulse 1s infinite;text-shadow:0 0 30px #ff0000}
+    @keyframes skullPulse{0%,100%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:.3}50%{transform:translate(-50%,-50%) scale(1.15) rotate(5deg);opacity:.6}}
+
+    /* Screen distortion */
+    #distortion{pointer-events:none;position:fixed;inset:0;opacity:0;z-index:6;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,0,0,.4) 0%,transparent 30%);animation:distort 2s infinite}
+    @keyframes distort{0%,100%{--x:20%;--y:30%}25%{--x:80%;--y:70%}50%{--x:40%;--y:60%}75%{--x:70%;--y:20%}}
+
+    #exitHint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:10px;color:#003300;opacity:0}
+    #reveal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;color:#00ff66;font-size:24px;z-index:10;background:#000}
   </style>
 </head>
 <body class="center">
-  <div id="startOverlay">Tap to initialize secure session</div>
+  <div id="startOverlay">Tap anywhere to continue</div>
   <div id="terminal"></div>
   <div id="exitHint">(hold screen for 3 seconds to exit)</div>
-  <div id="countdown">TRACE: 05</div>
+  <div id="countdown"></div>
+  <div id="countdownCorner">TRACE: 05</div>
   <div id="glitch"></div>
+  <div id="glitch2"></div>
   <div id="scanline"></div>
+  <div id="scanline2"></div>
   <div id="flash"></div>
   <div id="camera"></div>
+  <div id="gps"><div class="dot"></div></div>
+  <div id="warningBar"></div>
+  <div id="skull">☠️</div>
+  <div id="distortion"></div>
   <div id="modal">
     <div class="box">
-      <div class="warning-header">⚠ CRITICAL SYSTEM ALERT ⚠</div>
-      <div>• Camera feed: ACTIVE</div>
-      <div>• Microphone: RECORDING</div>
-      <div>• Location: TRACKED</div>
-      <div>• Contact list: ACCESSED</div>
-      <div>• Photos: SCANNING</div>
-      <div>• Messages: ENCRYPTED TRANSFER</div>
-      <div style="margin-top:16px;color:#ff6666;text-align:center">⚠ DO NOT POWER OFF DEVICE ⚠</div>
+      <div class="warning-header">⚠️ CRITICAL SECURITY BREACH ⚠️</div>
+      <div>🔴 CAMERA: STREAMING TO 45.33.21.156</div>
+      <div>🔴 MICROPHONE: LIVE FEED ACTIVE</div>
+      <div>🔴 GPS: REAL-TIME TRACKING ENABLED</div>
+      <div>🔴 CONTACTS: 247 ENTRIES UPLOADED</div>
+      <div>🔴 MESSAGES: 1,843 SMS EXTRACTED</div>
+      <div>🔴 PHOTOS: 2,156 FILES TRANSFERRING</div>
+      <div>🔴 PASSWORDS: 23 CREDENTIALS COMPROMISED</div>
+      <div>🔴 BANKING APPS: DATA HARVESTED</div>
+      <div>🔴 SOCIAL MEDIA: SESSIONS HIJACKED</div>
+      <div style="margin-top:20px;color:#ff3333;font-size:16px;text-align:center;font-weight:bold">⚠️ DEVICE PERMANENTLY COMPROMISED ⚠️</div>
+      <div style="margin-top:8px;color:#ff6666;text-align:center">DO NOT POWER OFF • DO NOT CLOSE WINDOW</div>
+      <div style="margin-top:8px;color:#ff6666;text-align:center">AUTHORITIES HAVE BEEN NOTIFIED</div>
     </div>
   </div>
-  <div id="reveal">~$-$-$-$-$~</div>
+  <div id="reveal">😄 Got you!<br><br>This was just a prank.<br>Nothing was actually compromised.</div>
 
   <script>
     const terminal=document.getElementById('terminal');
     const startOverlay=document.getElementById('startOverlay');
     const countdownEl=document.getElementById('countdown');
+    const countdownCorner=document.getElementById('countdownCorner');
     const glitch=document.getElementById('glitch');
+    const glitch2=document.getElementById('glitch2');
     const scanline=document.getElementById('scanline');
+    const scanline2=document.getElementById('scanline2');
     const flash=document.getElementById('flash');
     const camera=document.getElementById('camera');
+    const gps=document.getElementById('gps');
+    const warningBar=document.getElementById('warningBar');
+    const skull=document.getElementById('skull');
+    const distortion=document.getElementById('distortion');
     const modal=document.getElementById('modal');
     const exitHint=document.getElementById('exitHint');
     const reveal=document.getElementById('reveal');
 
     const beep=new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=');
     const alarm=new Audio('data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQIAAAD//wAA');
+    const siren=new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=');
 
     const preLines=[
-      'root@kali:~# nmap -sV -O 192.168.1.45',
-      'Starting Nmap 7.94 ( https://nmap.org )',
+      'root@kali:~# nmap -sS -sV -O -A 192.168.1.45',
+      'Starting Nmap 7.94SVN ( https://nmap.org )',
+      'Nmap scan report for target.local (192.168.1.45)',
+      'Host is up (0.0023s latency)',
       'PORT     STATE SERVICE    VERSION',
-      '22/tcp   open  ssh        OpenSSH 8.2',
+      '22/tcp   open  ssh        OpenSSH 8.2p1',
       '80/tcp   open  http       nginx 1.18.0',
       '443/tcp  open  ssl/https  nginx 1.18.0',
-      'OS: Android 12 (Linux 5.10.0)','',
+      '5555/tcp open  adb        Android Debug Bridge',
+      'Device type: smartphone',
+      'Running: Android 12 (Linux 5.10.0)',
+      'OS CPE: cpe:/o:google:android:12','',
       'root@kali:~# msfconsole -q',
-      'msf6 > use exploit/android/remote_access',
-      'msf6 exploit(remote_access) > set RHOST 192.168.1.45',
-      'msf6 exploit(remote_access) > exploit','',
-      '[+] Exploiting target...',
+      'msf6 > use exploit/android/adb/adb_server_exec',
+      'msf6 exploit(adb_server_exec) > set RHOST 192.168.1.45',
+      'RHOST => 192.168.1.45',
+      'msf6 exploit(adb_server_exec) > set PAYLOAD android/meterpreter/reverse_tcp',
+      'PAYLOAD => android/meterpreter/reverse_tcp',
+      'msf6 exploit(adb_server_exec) > exploit','',
+      '[*] Started reverse TCP handler on 192.168.1.100:4444',
+      '[*] Exploiting target...',
       '[+] Payload delivered successfully',
-      '[+] Session 1 opened','',
+      '[*] Sending stage (73802 bytes) to 192.168.1.45',
+      '[*] Meterpreter session 1 opened','',
       'meterpreter > sysinfo',
-      'Computer: target-device',
-      'OS: Android 12 (arm64)','',
+      'Computer    : target-device',
+      'OS          : Android 12 (Linux 5.10.0-android12)',
+      'Architecture: arm64',
+      'Meterpreter : android/meterpreter','',
+      'meterpreter > run post/android/gather/hashdump',
+      '[+] Hash dump successful',
       'meterpreter > getsystem',
-      '*** WARNING: ROOT PRIVILEGES OBTAINED ***'
+      '...got system via technique 1 (Named Pipe Impersonation)',
+      '*** ROOT PRIVILEGES OBTAINED ***'
     ];
 
     const generatedLines=[
-      '[!] Firewall detection... BYPASSED',
-      '[!] Antivirus detection... DISABLED',
-      '[✔] Establishing persistent backdoor...',
-      '[✔] Backdoor installed successfully','',
-      '>>> DEVICE COMPROMISE: COMPLETE <<<',
-      '⚠ CRITICAL: SENSOR ACCESS GRANTED','',
-      'Activating hardware modules...',
-      '• Front camera: ENABLED & RECORDING',
-      '• Rear camera: ENABLED & RECORDING', 
-      '• Microphone: ACTIVE',
-      '• GPS: LIVE TRACKING',
-      '• Accelerometer: MONITORING',
-      '• Gyroscope: MONITORING','',
-      'Extracting sensitive data...',
-      '• Contact list: 247 entries copied',
-      '• SMS messages: 1,843 messages archived',
-      '• Call history: 612 calls logged',
-      '• Photos: Scanning 2,156 files...',
-      '• Videos: Scanning 84 files...',
-      '• Apps installed: 67 apps catalogued',
-      '• Saved passwords: 23 credentials extracted',
-      '• Browser history: 4,892 entries copied',
-      '• Location history: 8 months of data','',
-      'Compressing payload...',
-      'Encryption key: 0xDEADBEEF',
-      'Uploading to remote server...',
-      '█░░░░░░░░░  12%',
-      '████░░░░░░  38%',
-      '███████░░░  67%',
-      '██████████ 100% - UPLOAD COMPLETE','',
-      '>>> REMOTE ACCESS ESTABLISHED <<<',
+      '[!] Bypassing SELinux protections...',
+      '[✔] SELinux: DISABLED',
+      '[!] Disabling Google Play Protect...',
+      '[✔] Play Protect: DISABLED',
+      '[!] Injecting persistent rootkit...',
+      '[✔] Rootkit installed at /system/bin/.hidden','',
+      '>>> FULL DEVICE CONTROL ACHIEVED <<<',
+      '⚠️ CRITICAL: ALL SENSORS COMPROMISED','',
+      'Activating surveillance modules...',
+      '• FRONT CAMERA: ████████████ STREAMING',
+      '• REAR CAMERA:  ████████████ STREAMING',
+      '• MICROPHONE:   ████████████ RECORDING',
+      '• GPS TRACKER:  ████████████ LIVE',
+      '• ACCELEROMETER: ███████████ ACTIVE',
+      '• GYROSCOPE:     ███████████ ACTIVE',
+      '• PROXIMITY:     ███████████ ACTIVE',
+      '• LIGHT SENSOR:  ███████████ ACTIVE','',
+      'Initiating data exfiltration...',
+      '• Contacts:       247 entries → COPIED',
+      '• SMS Messages:   1,843 messages → ARCHIVED',
+      '• Call History:   612 calls → LOGGED',
+      '• Photos:         2,156 files → SCANNING...',
+      '  └─ Personal photos: 891 files FLAGGED',
+      '  └─ Screenshots: 445 files FLAGGED',
+      '  └─ Downloads: 820 files FLAGGED',
+      '• Videos:         84 files → SCANNING...',
+      '• Voice Memos:    37 recordings → EXTRACTED',
+      '• Apps Installed: 67 apps → CATALOGUED',
+      '  └─ Banking: 3 apps COMPROMISED',
+      '  └─ Social: 8 apps SESSIONS HIJACKED',
+      '  └─ Email: 2 apps CREDENTIALS STOLEN',
+      '• Passwords:      23 credentials → DECRYPTED',
+      '• Browser Data:   4,892 entries → COPIED',
+      '  └─ Saved logins: 34 sites',
+      '  └─ Credit cards: 2 cards FOUND',
+      '  └─ Autofill data: 156 entries',
+      '• Location History: 8 months → ARCHIVED',
+      '• Clipboard:      Last 50 items → STORED',
+      '• Notifications:  2,341 archived → PARSED','',
+      'Establishing persistent backdoor...',
+      'Backdoor listening on: 0.0.0.0:31337',
       'C2 Server: 45.33.21.156:8443',
-      'Session expires: NEVER','',
-      '⚠⚠⚠ MAINTAINING CONTROL ⚠⚠⚠',
+      'Encryption: AES-256-CBC','',
+      'Compressing exfiltrated data...',
+      'Original size: 4.2 GB',
+      'Compressed: 1.8 GB (57% reduction)','',
+      'Uploading to attacker server...',
+      'Server: dark-web-c2.onion',
+      '▓░░░░░░░░░░░░░░  8%',
+      '▓▓▓░░░░░░░░░░░░  21%',
+      '▓▓▓▓▓▓░░░░░░░░░  38%',
+      '▓▓▓▓▓▓▓▓░░░░░░░  52%',
+      '▓▓▓▓▓▓▓▓▓▓▓░░░░  69%',
+      '▓▓▓▓▓▓▓▓▓▓▓▓▓░░  84%',
+      '▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100%','',
+      '[✔] UPLOAD COMPLETE','',
+      '>>> REMOTE CONTROL ESTABLISHED <<<',
+      'Session ID: 0xDEADBEEF',
+      'Session Type: PERMANENT',
+      'Privileges: ROOT/SYSTEM',
+      'Persistence: ENABLED','',
+      '⚠️⚠️⚠️ DEVICE FULLY COMPROMISED ⚠️⚠️⚠️',
+      'All data has been uploaded to remote server',
+      'Device is now under 24/7 surveillance',
+      'Camera and microphone remotely accessible',
+      'GPS location being tracked in real-time','',
       'DO NOT CLOSE THIS WINDOW',
       'DO NOT POWER OFF DEVICE',
-      'SURVEILLANCE ACTIVE'
+      'DO NOT CONTACT AUTHORITIES',
+      'ATTEMPTING TO REMOVE WILL TRIGGER DATA WIPE','',
+      'Maintaining control...',
+      'Heartbeat: ████ STABLE',
+      'Connection: ████ ENCRYPTED',
+      'Surveillance: ████ ACTIVE'
     ];
 
     const lines=[...preLines,'',...generatedLines];
-    let li=0,ci=0,cdTimer=null,flashTimer=null;
+    let li=0,ci=0,cdTimer=null,flashTimer=null,skullTimer=null;
 
     function escalate(){
       document.body.classList.add('warning','shake','flicker');
       glitch.style.opacity=1;
-      scanline.style.opacity=.5;
+      glitch2.style.opacity=1;
+      scanline.style.opacity=.6;
+      scanline2.style.opacity=.4;
       camera.style.opacity=1;
-      setTimeout(()=>modal.style.display='flex',1500);
+      gps.style.opacity=1;
+      warningBar.style.opacity=1;
+      distortion.style.opacity=1;
+      
+      setTimeout(()=>{
+        modal.style.display='flex';
+        skull.style.opacity=1;
+      },2000);
+      
       countdown();
       flashLoop();
-      aggressiveVibrate();
+      skullFlash();
+      extremeVibrate();
     }
 
     function flashLoop(){
-      flash.style.opacity=.6;
-      setTimeout(()=>flash.style.opacity=0,100);
-      try{alarm.play();beep.play()}catch(e){}
-      flashTimer=setTimeout(flashLoop,800+Math.random()*1200);
+      flash.style.opacity=.7;
+      setTimeout(()=>flash.style.opacity=0,80);
+      try{alarm.play();beep.play();siren.play()}catch(e){}
+      flashTimer=setTimeout(flashLoop,600+Math.random()*800);
     }
 
-    function aggressiveVibrate(){
+    function skullFlash(){
+      skull.style.opacity=skull.style.opacity==='1'?'.3':'1';
+      skullTimer=setTimeout(skullFlash,500);
+    }
+
+    function extremeVibrate(){
       if(navigator.vibrate){
-        navigator.vibrate([100,50,100,50,200]);
-        setTimeout(aggressiveVibrate,2000);
+        navigator.vibrate([150,50,150,50,300,50,150]);
+        setTimeout(extremeVibrate,1800);
       }
     }
 
     function countdown(){
-      let t=5; countdownEl.style.opacity=1; countdownEl.textContent=`TRACE: 0${t}`;
+      let t=5; 
+      countdownCorner.style.opacity=1; 
+      countdownCorner.textContent=`TRACE: 0${t}`;
+      countdownEl.textContent=t;
+      countdownEl.style.opacity=1;
+      
       cdTimer=setInterval(()=>{ 
         t--; 
-        countdownEl.textContent=`TRACE: 0${Math.max(t,0)}`; 
-        if(navigator.vibrate) navigator.vibrate([150,30,150]);
+        countdownCorner.textContent=`TRACE: 0${Math.max(t,0)}`;
+        countdownEl.textContent=Math.max(t,0);
+        if(navigator.vibrate) navigator.vibrate([200,40,200]);
         if(t<=0) clearInterval(cdTimer); 
       },1000);
     }
@@ -207,14 +331,14 @@
       if(ci<line.length){ 
         terminal.innerHTML+=line.charAt(ci++); 
         terminal.scrollTop=terminal.scrollHeight; 
-        setTimeout(type,25+Math.random()*35); 
+        setTimeout(type,20+Math.random()*30); 
       }
       else{ 
         terminal.innerHTML+='\n'; 
         terminal.scrollTop=terminal.scrollHeight; 
         ci=0; li++; 
         const slow=li>=preLines.length; 
-        setTimeout(type, slow?(2500+Math.random()*3500):250); 
+        setTimeout(type, slow?(2000+Math.random()*3000):200); 
       }
     }
 
@@ -226,21 +350,29 @@
     });
 
     let pressTimer=null;
-    document.addEventListener('touchstart',()=>pressTimer=setTimeout(end,30000));
+    document.addEventListener('touchstart',()=>pressTimer=setTimeout(end,3000));
     document.addEventListener('touchend',()=>clearTimeout(pressTimer));
-    document.addEventListener('mousedown',()=>pressTimer=setTimeout(end,30000));
+    document.addEventListener('mousedown',()=>pressTimer=setTimeout(end,3000));
     document.addEventListener('mouseup',()=>clearTimeout(pressTimer));
 
     function end(){
       clearInterval(cdTimer);
       clearTimeout(flashTimer);
+      clearTimeout(skullTimer);
       document.body.className='';
-      glitch.style.opacity=0; 
+      glitch.style.opacity=0;
+      glitch2.style.opacity=0;
       scanline.style.opacity=0;
-      flash.style.opacity=0; 
+      scanline2.style.opacity=0;
+      flash.style.opacity=0;
       camera.style.opacity=0;
-      modal.style.display='none'; 
+      gps.style.opacity=0;
+      warningBar.style.opacity=0;
+      skull.style.opacity=0;
+      distortion.style.opacity=0;
+      modal.style.display='none';
       countdownEl.style.opacity=0;
+      countdownCorner.style.opacity=0;
       reveal.style.display='flex';
       if(document.fullscreenElement) document.exitFullscreen();
     }
