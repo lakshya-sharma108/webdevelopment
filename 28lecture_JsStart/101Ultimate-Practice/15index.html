@@ -2,382 +2,1014 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Loading...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lakshaya // Digital Architect</title>
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{width:100%;height:100%;background:#000;color:#00ff66;font-family:Courier New,monospace;overflow:hidden}
-    body.center{display:flex;align-items:center;justify-content:center}
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-light: #fafafa;
+      --text-dark: #0a0a0a;
+      --text-light: #e8e8e8;
+      --accent: #00ff88;
+      --accent-secondary: #0088ff;
+      --muted: #888;
+      --border: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.03);
+      --transition: cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-    /* Terminal */
-    #terminal{width:100%;height:100%;padding:18px;font-size:13px;line-height:1.55;white-space:pre-wrap;overflow-y:auto;scrollbar-width:none}
-    #terminal::-webkit-scrollbar{display:none}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-    /* ULTRA Warning escalation */
-    body.warning{color:#ff0000;background:#0a0000}
-    body.warning #terminal{filter:contrast(1.4) brightness(1.2) saturate(1.5)}
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      transition: background 0.4s var(--transition), color 0.4s var(--transition);
+      cursor: none;
+    }
 
-    /* EXTREME shake and glitch */
-    .shake{animation:shake .15s infinite}
-    @keyframes shake{0%{transform:translate(0,0) rotate(0deg)}10%{transform:translate(-3px,3px) rotate(1deg)}20%{transform:translate(3px,-3px) rotate(-1deg)}30%{transform:translate(-3px,-3px) rotate(1deg)}40%{transform:translate(3px,3px) rotate(-1deg)}50%{transform:translate(-2px,2px) rotate(0.5deg)}60%{transform:translate(2px,-2px) rotate(-0.5deg)}70%{transform:translate(-3px,2px) rotate(1deg)}80%{transform:translate(3px,-3px) rotate(-1deg)}90%{transform:translate(-2px,-2px) rotate(0.5deg)}100%{transform:translate(0,0) rotate(0deg)}}
-    
-    .flicker{animation:flicker .06s infinite}
-    @keyframes flicker{0%{opacity:1}15%{opacity:.5}30%{opacity:1}45%{opacity:.6}60%{opacity:1}75%{opacity:.4}90%{opacity:1}100%{opacity:.7}}
+    body.light {
+      --bg-dark: #fafafa;
+      --text-light: #0a0a0a;
+      --border: rgba(0,0,0,0.08);
+      --glass: rgba(0,0,0,0.02);
+      --muted: #666;
+    }
 
-    /* Multi-layer glitch */
-    #glitch{pointer-events:none;position:fixed;inset:0;z-index:5;opacity:0;background:
-      repeating-linear-gradient(0deg,rgba(255,0,0,.2) 0,rgba(255,0,0,.2) 2px,transparent 2px,transparent 4px),
-      repeating-linear-gradient(90deg,rgba(0,255,0,.1) 0,rgba(0,255,0,.1) 3px,transparent 3px,transparent 6px),
-      radial-gradient(circle at 50% 50%, rgba(255,0,0,.3), transparent 50%);
-    animation:glitchShift .1s infinite}
-    @keyframes glitchShift{0%{transform:translate(0,0) skewX(0deg)}20%{transform:translate(-4px,3px) skewX(2deg)}40%{transform:translate(4px,-3px) skewX(-2deg)}60%{transform:translate(-3px,-4px) skewX(1deg)}80%{transform:translate(3px,4px) skewX(-1deg)}100%{transform:translate(0,0) skewX(0deg)}}
+    /* =========================
+       CUSTOM CURSOR
+    ========================== */
+    .cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.15s ease, opacity 0.3s ease;
+      mix-blend-mode: difference;
+    }
 
-    #glitch2{pointer-events:none;position:fixed;inset:0;z-index:6;opacity:0;mix-blend-mode:difference}
-    #glitch2::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,#f00 0%,transparent 50%,#0f0 100%);animation:glitchRGB .2s infinite}
-    @keyframes glitchRGB{0%{opacity:.3;transform:translate(0)}33%{opacity:.5;transform:translate(-5px,5px)}66%{opacity:.4;transform:translate(5px,-5px)}100%{opacity:.3;transform:translate(0)}}
+    .cursor-ring {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.2s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+      opacity: 0.5;
+    }
 
-    /* Intense flash */
-    #flash{pointer-events:none;position:fixed;inset:0;background:#ff0000;opacity:0;z-index:7;mix-blend-mode:screen}
-    
-    /* Multiple scan lines */
-    #scanline{pointer-events:none;position:fixed;inset:0;opacity:0;z-index:6;background:linear-gradient(rgba(255,0,0,.4) 50%,transparent 50%);background-size:100% 3px;animation:scan 6s linear infinite}
-    @keyframes scan{0%{background-position:0 0}100%{background-position:0 100%}}
+    .cursor-ring.expand {
+      width: 60px;
+      height: 60px;
+      opacity: 0.8;
+    }
 
-    #scanline2{pointer-events:none;position:fixed;inset:0;opacity:0;z-index:6;background:linear-gradient(90deg,rgba(255,255,0,.2) 50%,transparent 50%);background-size:4px 100%;animation:scanH 8s linear infinite}
-    @keyframes scanH{0%{background-position:0 0}100%{background-position:100% 0}}
+    @media (max-width: 768px) {
+      .cursor-dot, .cursor-ring { display: none; }
+      body { cursor: auto; }
+    }
 
-    /* Overlays */
-    #startOverlay{position:fixed;inset:0;background:#000;color:#00ff66;display:flex;align-items:center;justify-content:center;z-index:10;font-size:18px;text-align:center;cursor:pointer}
-    
-    /* MASSIVE countdown */
-    #countdown{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);color:#ff0000;font-size:80px;font-weight:bold;opacity:0;z-index:9;text-shadow:0 0 20px #ff0000,0 0 40px #ff0000;animation:megaPulse .8s infinite}
-    @keyframes megaPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.2)}}
+    /* =========================
+       INTRO ANIMATION
+    ========================== */
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease;
+    }
 
-    /* Countdown corner */
-    #countdownCorner{position:fixed;top:16px;right:16px;color:#ff0000;font-size:16px;font-weight:bold;opacity:0;z-index:8;text-shadow:0 0 10px #ff0000}
+    .intro-content {
+      text-align: center;
+      animation: fadeInUp 1.2s ease forwards;
+    }
 
-    /* Enhanced modal */
-    #modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.97);z-index:8;backdrop-filter:blur(5px)}
-    #modal .box{border:4px solid #ff0000;padding:28px;color:#ff0000;max-width:92%;text-align:left;background:#000;box-shadow:0 0 40px rgba(255,0,0,.7),inset 0 0 30px rgba(255,0,0,.3);animation:modalShake .25s infinite}
-    @keyframes modalShake{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-3px) rotate(0.5deg)}50%{transform:translateY(0) rotate(0deg)}75%{transform:translateY(-3px) rotate(-0.5deg)}}
-    #modal .box div{margin:10px 0;font-size:14px}
-    #modal .warning-header{font-size:22px;font-weight:bold;margin-bottom:18px;text-align:center;animation:blink .4s infinite}
-    @keyframes blink{0%,40%{opacity:1}41%,100%{opacity:.2}}
+    .intro-title {
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
 
-    /* Camera feed */
-    #camera{position:fixed;top:20px;left:20px;width:140px;height:105px;border:3px solid #ff0000;background:#000;z-index:8;opacity:0;box-shadow:0 0 25px rgba(255,0,0,.8)}
-    #camera::before{content:'● REC';position:absolute;top:5px;left:5px;color:#ff0000;font-size:11px;font-weight:bold;animation:blink .6s infinite}
-    #camera::after{content:'';position:absolute;inset:8px;background:radial-gradient(circle,rgba(255,0,0,.2),transparent);animation:camPulse 1.5s infinite}
-    @keyframes camPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.1)}}
+    .intro-subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      font-weight: 300;
+    }
 
-    /* GPS tracker */
-    #gps{position:fixed;top:20px;right:20px;width:120px;height:80px;border:2px solid #ff0000;background:#000;z-index:8;opacity:0;padding:8px;font-size:9px}
-    #gps::before{content:'GPS TRACKING';position:absolute;top:3px;left:50%;transform:translateX(-50%);color:#ff0000;font-size:8px;font-weight:bold}
-    #gps .dot{position:absolute;width:6px;height:6px;background:#ff0000;border-radius:50%;top:50%;left:50%;animation:ping 1s infinite;box-shadow:0 0 10px #ff0000}
-    @keyframes ping{0%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-50%) scale(3);opacity:0}}
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    /* Warning bars */
-    #warningBar{position:fixed;top:0;left:0;right:0;height:40px;background:repeating-linear-gradient(45deg,#ff0000,#ff0000 20px,#000 20px,#000 40px);opacity:0;z-index:7;animation:barSlide 1s linear infinite}
-    @keyframes barSlide{0%{transform:translateX(0)}100%{transform:translateX(40px)}}
+    /* =========================
+       HEADER
+    ========================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.6);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
 
-    /* Skull/warning icon */
-    #skull{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:120px;opacity:0;z-index:7;animation:skullPulse 1s infinite;text-shadow:0 0 30px #ff0000}
-    @keyframes skullPulse{0%,100%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:.3}50%{transform:translate(-50%,-50%) scale(1.15) rotate(5deg);opacity:.6}}
+    body.light header {
+      background: rgba(250, 250, 250, 0.6);
+    }
 
-    /* Screen distortion */
-    #distortion{pointer-events:none;position:fixed;inset:0;opacity:0;z-index:6;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,0,0,.4) 0%,transparent 30%);animation:distort 2s infinite}
-    @keyframes distort{0%,100%{--x:20%;--y:30%}25%{--x:80%;--y:70%}50%{--x:40%;--y:60%}75%{--x:70%;--y:20%}}
+    header.scrolled {
+      padding: 1rem 4rem;
+      background: rgba(10, 10, 10, 0.95);
+    }
 
-    #exitHint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:10px;color:#003300;opacity:0}
-    #reveal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;color:#00ff66;font-size:24px;z-index:10;background:#000}
+    body.light header.scrolled {
+      background: rgba(250, 250, 250, 0.95);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: var(--glass);
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    /* Mobile Menu */
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mobile-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-light);
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 2rem;
+      }
+
+      nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-dark);
+        padding: 2rem;
+        gap: 1.5rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.4s var(--transition);
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .mobile-toggle {
+        display: flex;
+      }
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+    section {
+      min-height: 100vh;
+      padding: 8rem 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1s var(--transition), transform 1s var(--transition);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 6rem 2rem;
+      }
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+    #hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-50px, -50px); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      max-width: 600px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+      background: var(--accent);
+      color: var(--bg-dark);
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s var(--transition);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent-secondary);
+      transform: translateX(-100%);
+      transition: transform 0.4s var(--transition);
+      z-index: -1;
+    }
+
+    .cta-button:hover::before {
+      transform: translateX(0);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(0,255,136,0.3);
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+    #about {
+      background: var(--glass);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-tag {
+      padding: 0.6rem 1.2rem;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 968px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* =========================
+       PROJECTS
+    ========================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.4s var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-secondary) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--transition);
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 60px rgba(0,255,136,0.1);
+    }
+
+    .project-number {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      padding: 0.4rem 0.8rem;
+      background: rgba(0,255,136,0.1);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+    #contact {
+      text-align: center;
+    }
+
+    .contact-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      padding: 1rem 2rem;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 600;
+      transition: all 0.3s var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .contact-link:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,255,136,0.2);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    footer {
+      padding: 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* =========================
+       COMMAND PALETTE
+    ========================== */
+    .palette {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 15vh;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10001;
+    }
+
+    .palette.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .palette-box {
+      width: min(600px, 90vw);
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+      overflow: hidden;
+      animation: slideDown 0.3s var(--transition);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .palette-input {
+      width: 100%;
+      padding: 1.5rem;
+      border: none;
+      outline: none;
+      font-size: 1.1rem;
+      background: transparent;
+      color: var(--text-light);
+      border-bottom: 1px solid var(--border);
+      font-family: inherit;
+    }
+
+    .palette-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .palette-item {
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .palette-item:hover {
+      background: var(--glass);
+    }
+
+    .palette-icon {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* Scroll to top */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,255,136,0.3);
+    }
   </style>
 </head>
-<body class="center">
-  <div id="startOverlay">Tap anywhere to continue</div>
-  <div id="terminal"></div>
-  <div id="exitHint">(hold screen for 3 seconds to exit)</div>
-  <div id="countdown"></div>
-  <div id="countdownCorner">TRACE: 05</div>
-  <div id="glitch"></div>
-  <div id="glitch2"></div>
-  <div id="scanline"></div>
-  <div id="scanline2"></div>
-  <div id="flash"></div>
-  <div id="camera"></div>
-  <div id="gps"><div class="dot"></div></div>
-  <div id="warningBar"></div>
-  <div id="skull">☠️</div>
-  <div id="distortion"></div>
-  <div id="modal">
-    <div class="box">
-      <div class="warning-header">⚠️ CRITICAL SECURITY BREACH ⚠️</div>
-      <div>🔴 CAMERA: STREAMING TO 45.33.21.156</div>
-      <div>🔴 MICROPHONE: LIVE FEED ACTIVE</div>
-      <div>🔴 GPS: REAL-TIME TRACKING ENABLED</div>
-      <div>🔴 CONTACTS: 247 ENTRIES UPLOADED</div>
-      <div>🔴 MESSAGES: 1,843 SMS EXTRACTED</div>
-      <div>🔴 PHOTOS: 2,156 FILES TRANSFERRING</div>
-      <div>🔴 PASSWORDS: 23 CREDENTIALS COMPROMISED</div>
-      <div>🔴 BANKING APPS: DATA HARVESTED</div>
-      <div>🔴 SOCIAL MEDIA: SESSIONS HIJACKED</div>
-      <div style="margin-top:20px;color:#ff3333;font-size:16px;text-align:center;font-weight:bold">⚠️ DEVICE PERMANENTLY COMPROMISED ⚠️</div>
-      <div style="margin-top:8px;color:#ff6666;text-align:center">DO NOT POWER OFF • DO NOT CLOSE WINDOW</div>
-      <div style="margin-top:8px;color:#ff6666;text-align:center">AUTHORITIES HAVE BEEN NOTIFIED</div>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Intro -->
+  <div id="intro">
+    <div class="intro-content">
+      <div class="intro-title">LAKSHAYA</div>
+      <div class="intro-subtitle">DIGITAL ARCHITECT</div>
     </div>
   </div>
-  <div id="reveal">😄 Got you!<br><br>This was just a prank.<br>Nothing was actually compromised.</div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="logo">LAK</div>
+    <nav id="nav">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+      <span class="theme-toggle" id="themeToggle">○</span>
+    </nav>
+    <div class="mobile-toggle" id="mobileToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero">
+    <h1 class="hero-title">
+      Crafting <span class="gradient-text">Digital Experiences</span><br/>
+      That Matter
+    </h1>
+    <p class="hero-subtitle">
+      I design and build premium digital experiences that blend aesthetics with functionality. 
+      Every pixel, every interaction—crafted with purpose.
+    </p>
+    <a href="#work" class="cta-button">
+      View My Work
+      <span>→</span>
+    </a>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          I'm Lakshaya, a digital architect who transforms ideas into immersive experiences. 
+          I don't just write code—I craft systems that feel alive, responsive, and intentional.
+        </p>
+        <p>
+          My approach focuses on clarity over complexity, performance over bloat, 
+          and experiences that reward attention to detail.
+        </p>
+        <div class="skills">
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">Frontend Development</span>
+          <span class="skill-tag">System Architecture</span>
+          <span class="skill-tag">Performance Optimization</span>
+          <span class="skill-tag">Motion Design</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <!-- Placeholder for future image/graphic -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work">
+    <h2 class="section-title">Selected Work</h2>
+    <div class="projects-grid" id="projects"></div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="contact-content">
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="hero-subtitle">
+        If this experience resonated with you, let's create something extraordinary together.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:hello@lakshaya.dev" class="contact-link">
+          <span>✉</span> Email
+        </a>
+        <a href="https://github.com" class="contact-link">
+          <span>⚡</span> GitHub
+        </a>
+        <a href="https://linkedin.com" class="contact-link">
+          <span>⚡</span> LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Lakshaya • Designed & Engineered with Precision</p>
+  </footer>
+
+  <!-- Command Palette -->
+  <div class="palette" id="palette">
+    <div class="palette-box">
+      <input class="palette-input" id="paletteInput" placeholder="Type a command..." autocomplete="off" />
+      <div class="palette-list" id="paletteList"></div>
+    </div>
+  </div>
+
+  <!-- Scroll to Top -->
+  <div class="scroll-top" id="scrollTop">↑</div>
 
   <script>
-    const terminal=document.getElementById('terminal');
-    const startOverlay=document.getElementById('startOverlay');
-    const countdownEl=document.getElementById('countdown');
-    const countdownCorner=document.getElementById('countdownCorner');
-    const glitch=document.getElementById('glitch');
-    const glitch2=document.getElementById('glitch2');
-    const scanline=document.getElementById('scanline');
-    const scanline2=document.getElementById('scanline2');
-    const flash=document.getElementById('flash');
-    const camera=document.getElementById('camera');
-    const gps=document.getElementById('gps');
-    const warningBar=document.getElementById('warningBar');
-    const skull=document.getElementById('skull');
-    const distortion=document.getElementById('distortion');
-    const modal=document.getElementById('modal');
-    const exitHint=document.getElementById('exitHint');
-    const reveal=document.getElementById('reveal');
-
-    const beep=new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=');
-    const alarm=new Audio('data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQIAAAD//wAA');
-    const siren=new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=');
-
-    const preLines=[
-      'root@kali:~# nmap -sS -sV -O -A 192.168.1.45',
-      'Starting Nmap 7.94SVN ( https://nmap.org )',
-      'Nmap scan report for target.local (192.168.1.45)',
-      'Host is up (0.0023s latency)',
-      'PORT     STATE SERVICE    VERSION',
-      '22/tcp   open  ssh        OpenSSH 8.2p1',
-      '80/tcp   open  http       nginx 1.18.0',
-      '443/tcp  open  ssl/https  nginx 1.18.0',
-      '5555/tcp open  adb        Android Debug Bridge',
-      'Device type: smartphone',
-      'Running: Android 12 (Linux 5.10.0)',
-      'OS CPE: cpe:/o:google:android:12','',
-      'root@kali:~# msfconsole -q',
-      'msf6 > use exploit/android/adb/adb_server_exec',
-      'msf6 exploit(adb_server_exec) > set RHOST 192.168.1.45',
-      'RHOST => 192.168.1.45',
-      'msf6 exploit(adb_server_exec) > set PAYLOAD android/meterpreter/reverse_tcp',
-      'PAYLOAD => android/meterpreter/reverse_tcp',
-      'msf6 exploit(adb_server_exec) > exploit','',
-      '[*] Started reverse TCP handler on 192.168.1.100:4444',
-      '[*] Exploiting target...',
-      '[+] Payload delivered successfully',
-      '[*] Sending stage (73802 bytes) to 192.168.1.45',
-      '[*] Meterpreter session 1 opened','',
-      'meterpreter > sysinfo',
-      'Computer    : target-device',
-      'OS          : Android 12 (Linux 5.10.0-android12)',
-      'Architecture: arm64',
-      'Meterpreter : android/meterpreter','',
-      'meterpreter > run post/android/gather/hashdump',
-      '[+] Hash dump successful',
-      'meterpreter > getsystem',
-      '...got system via technique 1 (Named Pipe Impersonation)',
-      '*** ROOT PRIVILEGES OBTAINED ***'
-    ];
-
-    const generatedLines=[
-      '[!] Bypassing SELinux protections...',
-      '[✔] SELinux: DISABLED',
-      '[!] Disabling Google Play Protect...',
-      '[✔] Play Protect: DISABLED',
-      '[!] Injecting persistent rootkit...',
-      '[✔] Rootkit installed at /system/bin/.hidden','',
-      '>>> FULL DEVICE CONTROL ACHIEVED <<<',
-      '⚠️ CRITICAL: ALL SENSORS COMPROMISED','',
-      'Activating surveillance modules...',
-      '• FRONT CAMERA: ████████████ STREAMING',
-      '• REAR CAMERA:  ████████████ STREAMING',
-      '• MICROPHONE:   ████████████ RECORDING',
-      '• GPS TRACKER:  ████████████ LIVE',
-      '• ACCELEROMETER: ███████████ ACTIVE',
-      '• GYROSCOPE:     ███████████ ACTIVE',
-      '• PROXIMITY:     ███████████ ACTIVE',
-      '• LIGHT SENSOR:  ███████████ ACTIVE','',
-      'Initiating data exfiltration...',
-      '• Contacts:       247 entries → COPIED',
-      '• SMS Messages:   1,843 messages → ARCHIVED',
-      '• Call History:   612 calls → LOGGED',
-      '• Photos:         2,156 files → SCANNING...',
-      '  └─ Personal photos: 891 files FLAGGED',
-      '  └─ Screenshots: 445 files FLAGGED',
-      '  └─ Downloads: 820 files FLAGGED',
-      '• Videos:         84 files → SCANNING...',
-      '• Voice Memos:    37 recordings → EXTRACTED',
-      '• Apps Installed: 67 apps → CATALOGUED',
-      '  └─ Banking: 3 apps COMPROMISED',
-      '  └─ Social: 8 apps SESSIONS HIJACKED',
-      '  └─ Email: 2 apps CREDENTIALS STOLEN',
-      '• Passwords:      23 credentials → DECRYPTED',
-      '• Browser Data:   4,892 entries → COPIED',
-      '  └─ Saved logins: 34 sites',
-      '  └─ Credit cards: 2 cards FOUND',
-      '  └─ Autofill data: 156 entries',
-      '• Location History: 8 months → ARCHIVED',
-      '• Clipboard:      Last 50 items → STORED',
-      '• Notifications:  2,341 archived → PARSED','',
-      'Establishing persistent backdoor...',
-      'Backdoor listening on: 0.0.0.0:31337',
-      'C2 Server: 45.33.21.156:8443',
-      'Encryption: AES-256-CBC','',
-      'Compressing exfiltrated data...',
-      'Original size: 4.2 GB',
-      'Compressed: 1.8 GB (57% reduction)','',
-      'Uploading to attacker server...',
-      'Server: dark-web-c2.onion',
-      '▓░░░░░░░░░░░░░░  8%',
-      '▓▓▓░░░░░░░░░░░░  21%',
-      '▓▓▓▓▓▓░░░░░░░░░  38%',
-      '▓▓▓▓▓▓▓▓░░░░░░░  52%',
-      '▓▓▓▓▓▓▓▓▓▓▓░░░░  69%',
-      '▓▓▓▓▓▓▓▓▓▓▓▓▓░░  84%',
-      '▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100%','',
-      '[✔] UPLOAD COMPLETE','',
-      '>>> REMOTE CONTROL ESTABLISHED <<<',
-      'Session ID: 0xDEADBEEF',
-      'Session Type: PERMANENT',
-      'Privileges: ROOT/SYSTEM',
-      'Persistence: ENABLED','',
-      '⚠️⚠️⚠️ DEVICE FULLY COMPROMISED ⚠️⚠️⚠️',
-      'All data has been uploaded to remote server',
-      'Device is now under 24/7 surveillance',
-      'Camera and microphone remotely accessible',
-      'GPS location being tracked in real-time','',
-      'DO NOT CLOSE THIS WINDOW',
-      'DO NOT POWER OFF DEVICE',
-      'DO NOT CONTACT AUTHORITIES',
-      'ATTEMPTING TO REMOVE WILL TRIGGER DATA WIPE','',
-      'Maintaining control...',
-      'Heartbeat: ████ STABLE',
-      'Connection: ████ ENCRYPTED',
-      'Surveillance: ████ ACTIVE'
-    ];
-
-    const lines=[...preLines,'',...generatedLines];
-    let li=0,ci=0,cdTimer=null,flashTimer=null,skullTimer=null;
-
-    function escalate(){
-      document.body.classList.add('warning','shake','flicker');
-      glitch.style.opacity=1;
-      glitch2.style.opacity=1;
-      scanline.style.opacity=.6;
-      scanline2.style.opacity=.4;
-      camera.style.opacity=1;
-      gps.style.opacity=1;
-      warningBar.style.opacity=1;
-      distortion.style.opacity=1;
-      
-      setTimeout(()=>{
-        modal.style.display='flex';
-        skull.style.opacity=1;
-      },2000);
-      
-      countdown();
-      flashLoop();
-      skullFlash();
-      extremeVibrate();
-    }
-
-    function flashLoop(){
-      flash.style.opacity=.7;
-      setTimeout(()=>flash.style.opacity=0,80);
-      try{alarm.play();beep.play();siren.play()}catch(e){}
-      flashTimer=setTimeout(flashLoop,600+Math.random()*800);
-    }
-
-    function skullFlash(){
-      skull.style.opacity=skull.style.opacity==='1'?'.3':'1';
-      skullTimer=setTimeout(skullFlash,500);
-    }
-
-    function extremeVibrate(){
-      if(navigator.vibrate){
-        navigator.vibrate([150,50,150,50,300,50,150]);
-        setTimeout(extremeVibrate,1800);
-      }
-    }
-
-    function countdown(){
-      let t=5; 
-      countdownCorner.style.opacity=1; 
-      countdownCorner.textContent=`TRACE: 0${t}`;
-      countdownEl.textContent=t;
-      countdownEl.style.opacity=1;
-      
-      cdTimer=setInterval(()=>{ 
-        t--; 
-        countdownCorner.textContent=`TRACE: 0${Math.max(t,0)}`;
-        countdownEl.textContent=Math.max(t,0);
-        if(navigator.vibrate) navigator.vibrate([200,40,200]);
-        if(t<=0) clearInterval(cdTimer); 
-      },1000);
-    }
-
-    function type(){
-      if(li>=lines.length){ exitHint.style.opacity=1; return; }
-      const line=lines[li];
-      if(line.includes('ROOT PRIVILEGES OBTAINED')) escalate();
-      if(ci<line.length){ 
-        terminal.innerHTML+=line.charAt(ci++); 
-        terminal.scrollTop=terminal.scrollHeight; 
-        setTimeout(type,20+Math.random()*30); 
-      }
-      else{ 
-        terminal.innerHTML+='\n'; 
-        terminal.scrollTop=terminal.scrollHeight; 
-        ci=0; li++; 
-        const slow=li>=preLines.length; 
-        setTimeout(type, slow?(2000+Math.random()*3000):200); 
-      }
-    }
-
-    startOverlay.addEventListener('click',()=>{
-      startOverlay.style.display='none';
-      document.body.classList.remove('center');
-      if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
-      setTimeout(type,600);
+    // Intro Animation
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const intro = document.getElementById('intro');
+        intro.style.opacity = '0';
+        setTimeout(() => intro.style.display = 'none', 800);
+      }, 2000);
     });
 
-    let pressTimer=null;
-    document.addEventListener('touchstart',()=>pressTimer=setTimeout(end,3000));
-    document.addEventListener('touchend',()=>clearTimeout(pressTimer));
-    document.addEventListener('mousedown',()=>pressTimer=setTimeout(end,3000));
-    document.addEventListener('mouseup',()=>clearTimeout(pressTimer));
+    // Custom Cursor
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
 
-    
-    function end(){
-      clearInterval(cdTimer);
-      clearTimeout(flashTimer);
-      clearTimeout(skullTimer);
-      document.body.className='';
-      glitch.style.opacity=0;
-      glitch2.style.opacity=0;
-      scanline.style.opacity=0;
-      scanline2.style.opacity=0;
-      flash.style.opacity=0;
-      camera.style.opacity=0;
-      gps.style.opacity=0;
-      warningBar.style.opacity=0;
-      skull.style.opacity=0;
-      distortion.style.opacity=0;
-      modal.style.display='none';
-      countdownEl.style.opacity=0;
-      countdownCorner.style.opacity=0;
-      reveal.style.display='flex';
-      if(document.fullscreenElement) document.exitFullscreen();
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Cursor hover effects
+    document.querySelectorAll('a, button, .project-card, .theme-toggle, .skill-tag').forEach(el => {
+      el.addEventListener('mouseenter', () => cursorRing.classList.add('expand'));
+      el.addEventListener('mouseleave', () => cursorRing.classList.remove('expand'));
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const nav = document.getElementById('nav');
+    mobileToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => nav.classList.remove('active'));
+    });
+
+    // Scroll Reveal
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    let isDark = true;
+
+    themeToggle.addEventListener('click', () => {
+      isDark = !isDark;
+      document.body.classList.toggle('light');
+      themeToggle.textContent = isDark ? '○' : '●';
+    });
+
+    // Projects
+    const projects = [
+      {
+        number: '01',
+        title: 'Cinematic Portfolio',
+        desc: 'A scroll-driven narrative experience that tells a story through motion and interaction.',
+        tags: ['Motion Design', 'React', 'GSAP']
+      },
+      {
+        number: '02',
+        title: 'System Dashboard',
+        desc: 'High-density interface designed for clarity, efficiency, and real-time data visualization.',
+        tags: ['UI/UX', 'Data Viz', 'Performance']
+      },
+      {
+        number: '03',
+        title: 'Experimental Interface',
+        desc: 'Pushing the boundaries of web interactions with advanced animations and micro-interactions.',
+        tags: ['WebGL', 'Three.js', 'Creative']
+      },
+      {
+        number: '04',
+        title: 'Performance Lab',
+        desc: 'Speed-optimized architecture achieving perfect Lighthouse scores with zero compromise.',
+        tags: ['Optimization', 'Core Web Vitals', 'Speed']
+      }
+    ];
+
+    const projectsContainer = document.getElementById('projects');
+    projects.forEach(project => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.innerHTML = `
+        <div class="project-number">${project.number}</div>
+        <h3 class="project-title">${project.title}</h3>
+        <p class="project-desc">${project.desc}</p>
+        <div class="project-tags">
+          ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+      `;
+      projectsContainer.appendChild(card);
+    });
+
+    // Command Palette
+    const palette = document.getElementById('palette');
+    const paletteInput = document.getElementById('paletteInput');
+    const paletteList = document.getElementById('paletteList');
+
+    const commands = [
+      { name: 'Go to Home', action: () => location.hash = '#hero' },
+      { name: 'Go to About', action: () => location.hash = '#about' },
+      { name: 'Go to Work', action: () => location.hash = '#work' },
+      { name: 'Go to Contact', action: () => location.hash = '#contact' },
+      { name: 'Toggle Theme', action: () => themeToggle.click() },
+      { name: 'Scroll to Top', action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) }
+    ];
+
+    function renderCommands(list) {
+      paletteList.innerHTML = '';
+      list.forEach(cmd => {
+        const item = document.createElement('div');
+        item.className = 'palette-item';
+        item.innerHTML = `<div class="palette-icon"></div><span>${cmd.name}</span>`;
+        item.onclick = () => {
+          cmd.action();
+          closePalette();
+        };
+        paletteList.appendChild(item);
+      });
+    }
+
+    function openPalette() {
+      palette.classList.add('active');
+      paletteInput.value = '';
+      paletteInput.focus();
+      renderCommands(commands);
+    }
+
+    function closePalette() {
+      palette.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openPalette();
+      }
+      if (e.key === 'Escape') closePalette();
+    });
+
+    paletteInput.addEventListener('input', (e) => {
+      const value = e.target.value.toLowerCase();
+      renderCommands(commands.filter(c => c.name.toLowerCase().includes(value)));
+    });
+
+    // Click outside to close palette
+    palette.addEventListener('click', (e) => {
+      if (e.target === palette) closePalette();
+    });
+
+    // Scroll to Top Button
+    const scrollTop = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        scrollTop.classList.add('visible');
+      } else {
+        scrollTop.classList.remove('visible');
+      }
+    });
+
+    scrollTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Easter Egg - Logo Click
+    let logoClicks = 0;
+    document.querySelector('.logo').addEventListener('click', () => {
+      logoClicks++;
+      if (logoClicks === 5) {
+        document.body.style.filter = 'hue-rotate(180deg)';
+        setTimeout(() => {
+          document.body.style.filter = 'none';
+          logoClicks = 0;
+        }, 1000);
+      }
+    });
+
+    // Smooth Scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Performance optimization - reduce animations on low-end devices
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animation = 'none';
+        el.style.transition = 'none';
+      });
     }
   </script>
 </body>
