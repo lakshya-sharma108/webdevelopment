@@ -63,12 +63,32 @@ async function getData() {
     let rowData = await fetch('https://jsonplaceholder.typicode.com/todos/1');
     let data = await rowData.json();
 
-    console.log(data);
+    // console.log(data);
+}
+
+async function showData() {
+   let rawData = await fetch("https://fakestoreapi.com/products") 
+   let data = await rawData.json();
+   console.log(data);
+   
 }
 
 
 async function main2() {
     getData();
+    await showData();
 }
 
+
+
+
+
 main2();
+
+
+
+
+
+
+
+
