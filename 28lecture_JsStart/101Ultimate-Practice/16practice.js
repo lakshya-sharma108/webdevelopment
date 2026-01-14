@@ -45,6 +45,7 @@ finally {
 // if you want to run something after return in a function the use finally 
 
 
+
 // Example:
 function checkFinally() {
     try {
